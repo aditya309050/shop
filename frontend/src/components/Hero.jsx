@@ -1,38 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ArrowRight, Sparkles, Compass, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sparkles, Crown, ShieldCheck, Gem } from 'lucide-react';
 
-export default function Hero({ onExploreClick, onViewLookbook }) {
+export default function Hero({ onExploreClick, onViewCategory }) {
   const heroRef = useRef(null);
-  const headlineRef = useRef(null);
-  const subtextRef = useRef(null);
-  const imageRef = useRef(null);
-  const badgesRef = useRef(null);
-  const marqueeRef = useRef(null);
+  const textRef = useRef(null);
+  const imgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Cinematic Entrance Timeline
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      tl.from(imageRef.current, {
-        scale: 1.25,
+      gsap.from(imgRef.current, {
+        scale: 1.15,
         opacity: 0,
-        duration: 1.8,
+        duration: 1.6,
         ease: 'power2.out'
-      })
-      .from(headlineRef.current?.querySelectorAll('.reveal-text'), {
-        y: 60,
+      });
+      gsap.from(textRef.current?.children, {
+        y: 40,
         opacity: 0,
         stagger: 0.15,
-        duration: 1.2,
-      }, '-=1.2')
-      .from(subtextRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-      }, '-=0.8');
-
+        duration: 1,
+        ease: 'power3.out'
+      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -41,137 +30,80 @@ export default function Hero({ onExploreClick, onViewLookbook }) {
   return (
     <section 
       ref={heroRef}
-      style={{
-        position: 'relative',
-        minHeight: '88vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        background: 'radial-gradient(ellipse at center, #18181f 0%, #09090b 100%)',
-        borderBottom: '1px solid rgba(197, 160, 89, 0.2)'
-      }}
+      className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#121015] via-[#09090b] to-[#09090b] border-b border-gold/20"
     >
-      {/* Background Cinematic Visual with Vignette */}
-      <div 
-        ref={imageRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          overflow: 'hidden'
-        }}
-      >
+      {/* Background Campaign Visual */}
+      <div ref={imgRef} className="absolute inset-0 z-0 overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=2000&q=85" 
-          alt="Haute Couture Campaign" 
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 20%',
-            opacity: 0.42,
-            filter: 'contrast(1.1) brightness(0.95)'
-          }}
+          src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=2000&q=85" 
+          alt="Manyavar & Mohey Grand Wedding Campaign" 
+          className="w-full h-full object-cover object-center opacity-40 filter brightness-90 contrast-110"
         />
-        {/* Luxury Vignette & Grain Gradients */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(9,9,11,0.6) 0%, rgba(9,9,11,0.2) 40%, rgba(9,9,11,0.95) 100%)'
-        }} />
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(circle at 70% 30%, rgba(197, 160, 89, 0.12) 0%, transparent 60%)'
-        }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-[#09090b]/80" />
+        <div className="absolute inset-0 bg-radial-gradient from-gold/15 via-transparent to-transparent opacity-60" />
       </div>
 
-      {/* Main Hero Typography & Call to Action */}
-      <div 
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          maxWidth: '1440px',
-          margin: '0 auto',
-          width: '100%',
-          padding: '80px 32px 80px 32px'
-        }}
-      >
-        <div style={{ maxWidth: '880px' }}>
-          <div ref={headlineRef} style={{ marginBottom: '24px' }}>
-            <div 
-              className="reveal-text"
-              style={{
-                fontFamily: 'var(--font-cinzel)',
-                fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
-                letterSpacing: '0.35em',
-                color: '#c5a059',
-                textTransform: 'uppercase',
-                marginBottom: '12px'
-              }}
-            >
-              The Architecture of Ethereal Silk
-            </div>
-            
-            <h1 
-              className="reveal-text font-display"
-              style={{
-                fontSize: 'clamp(2.8rem, 6.5vw, 5.8rem)',
-                lineHeight: 1.02,
-                fontWeight: 400,
-                letterSpacing: '0.04em',
-                color: '#faf8f5',
-                textShadow: '0 10px 40px rgba(0,0,0,0.8)'
-              }}
-            >
-              Artisanal Grandeur <br />
-              <span style={{ fontStyle: 'italic', fontFamily: 'var(--font-serif-editorial)', color: '#f3e6cf' }}>
-                Reimagined in Organza & Tilla.
-              </span>
-            </h1>
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-16">
+        <div ref={textRef} className="max-w-3xl space-y-6">
+          {/* Tagline Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1822]/90 border border-gold/40 backdrop-blur-md shadow-lg">
+            <Crown size={14} className="text-gold animate-pulse" />
+            <span className="font-cinzel text-xs tracking-[0.25em] text-gold uppercase font-bold">
+              Taiyaar Hoke Aaiye
+            </span>
+            <span className="text-white/40">|</span>
+            <span className="font-cinzel text-xs tracking-wider text-gold-rich">
+              The Grand Wedding Edit 2026
+            </span>
           </div>
 
-          <p 
-            ref={subtextRef}
-            style={{
-              fontFamily: 'var(--font-serif-editorial)',
-              fontSize: 'clamp(1.1rem, 2.2vw, 1.45rem)',
-              lineHeight: 1.6,
-              color: '#d6d2ca',
-              maxWidth: '640px',
-              marginBottom: '36px',
-              fontWeight: 300
-            }}
-          >
-            Whisper-light hand-painted botanicals, molten Banarasi kadwa weaves, and 
-            sculpted royal silhouettes designed for discerning patrons worldwide.
+          {/* Headline */}
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-normal leading-[1.08] text-ivory tracking-wide">
+            Celebrate In <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark font-medium">
+              Imperial Grandeur
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="font-editorial italic text-xl sm:text-2xl text-[#d4cdbf] leading-relaxed max-w-2xl">
+            From the sacred handlooms of Varanasi to Rajputana bridal zardozi and groom's shahi sherwanis: elevate every celebration with Manyavar & Mohey.
           </p>
 
-          {/* Action Button Suite */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', alignItems: 'center' }}>
-            <button 
-              onClick={onExploreClick}
-              className="btn-couture"
-              style={{
-                padding: '16px 36px',
-                fontSize: '0.85rem'
-              }}
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-4 pt-4">
+            <button
+              onClick={() => onViewCategory ? onViewCategory('Women') : onExploreClick()}
+              className="px-8 py-4 rounded-sm bg-gradient-to-r from-gold via-gold-bright to-gold-dark text-black font-cinzel font-bold text-xs tracking-[0.2em] uppercase shadow-lg shadow-gold/30 hover:shadow-gold/60 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer"
             >
-              <span>Explore Collections</span>
-              <ArrowRight size={16} style={{ marginLeft: '10px' }} />
+              <Gem size={14} />
+              <span>Shop Women (Mohey)</span>
             </button>
 
-            <button 
-              onClick={onViewLookbook}
-              className="btn-outline-gold"
-              style={{
-                padding: '15px 30px'
-              }}
+            <button
+              onClick={() => onViewCategory ? onViewCategory('Men') : onExploreClick()}
+              className="px-8 py-4 rounded-sm bg-[#181820]/90 border border-gold/50 text-gold-rich font-cinzel font-semibold text-xs tracking-[0.2em] uppercase hover:bg-gold/20 hover:text-white transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md"
             >
-              <Compass size={15} style={{ marginRight: '8px' }} />
-              <span>View 2026 Lookbook</span>
+              <Crown size={14} className="text-gold" />
+              <span>Shop Men (Manyavar)</span>
             </button>
+          </div>
+
+          {/* Trust Highlights */}
+          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-gold/20 max-w-xl">
+            <div className="space-y-1">
+              <div className="font-cinzel text-lg font-bold text-gold">100%</div>
+              <div className="text-xs text-[#a09885] tracking-wider uppercase">Authentic Silk Mark</div>
+            </div>
+            <div className="space-y-1">
+              <div className="font-cinzel text-lg font-bold text-gold">Bespoke</div>
+              <div className="text-xs text-[#a09885] tracking-wider uppercase">Made-to-Measure Fit</div>
+            </div>
+            <div className="space-y-1">
+              <div className="font-cinzel text-lg font-bold text-gold">Global</div>
+              <div className="text-xs text-[#a09885] tracking-wider uppercase">Express Concierge</div>
+            </div>
           </div>
         </div>
       </div>

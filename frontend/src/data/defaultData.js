@@ -1,16 +1,19 @@
 export const defaultProducts = [
-  // ==========================================
-  // --- 1. BANARASI SAREES ARCHIVES ---
-  // ==========================================
+  // ============================================================
+  // --- 1. WOMEN (MOHEY) - BANARASI SAREES ARCHIVES ---
+  // ============================================================
   {
     id: "crimson-kashi-kadwa-banarasi",
-    name: "Royal Crimson Kadwa Katan Banarasi Saree",
+    name: "Royal Crimson Kadwa Katan Banarasi Silk Saree",
+    brand: "Mohey Haute Couture",
+    gender: "Women",
     tagline: "Pure mulberry Katan silk with 24K electroplated gold Kadwa floral bel",
     price: 34500,
     originalPrice: 42000,
     currency: "INR",
     category: "Banarasi Sarees",
     subCategory: "Kadwa Katan Silk",
+    occasion: "Wedding & Bridal",
     collection: "Sacred Banarasi & Kashi Weaves",
     isNew: true,
     isBestseller: true,
@@ -42,12 +45,15 @@ export const defaultProducts = [
   {
     id: "sovereign-gold-banarasi-tissue",
     name: "Sovereign Molten Gold Banarasi Tissue Saree",
+    brand: "Mohey Celebrations",
+    gender: "Women",
     tagline: "Metallic spun molten gold tissue with antique sona rupa border",
     price: 28900,
     originalPrice: 35000,
     currency: "INR",
     category: "Banarasi Sarees",
     subCategory: "Molten Tissue",
+    occasion: "Reception & Cocktail",
     collection: "Sacred Banarasi & Kashi Weaves",
     isNew: false,
     isBestseller: true,
@@ -78,12 +84,15 @@ export const defaultProducts = [
   {
     id: "neelambari-jangla-banarasi",
     name: "Neelambari Royal Midnight Banarasi Jangla Saree",
+    brand: "Mohey Heritage",
+    gender: "Women",
     tagline: "Deep sapphire Katan silk with all-over intricate gold Jangla floral vine",
     price: 42000,
     originalPrice: 50000,
     currency: "INR",
     category: "Banarasi Sarees",
     subCategory: "Jangla Archive",
+    occasion: "Sangeet & Wedding",
     collection: "Sacred Banarasi & Kashi Weaves",
     isNew: true,
     isBestseller: false,
@@ -109,47 +118,17 @@ export const defaultProducts = [
     features: ["All-Over Jangla Weave", "GI Tag Certified", "Heirloom Investment"]
   },
   {
-    id: "shikargah-rani-pink-banarasi",
-    name: "Rani Pink Shikargah Banarasi Handloom Saree",
-    tagline: "Vibrant magenta silk depicting royal hunting flora and fauna motifs in pure zari",
-    price: 38500,
-    originalPrice: 46000,
-    currency: "INR",
-    category: "Banarasi Sarees",
-    subCategory: "Shikargah Heritage",
-    collection: "Sacred Banarasi & Kashi Weaves",
-    isNew: false,
-    isBestseller: true,
-    rating: 4.9,
-    reviewsCount: 39,
-    colors: [
-      { name: "Rani Magenta Pink", hex: "#C71585" },
-      { name: "Kesar Saffron", hex: "#E58C3A" }
-    ],
-    sizes: ["Standard Handloom (6.5m)"],
-    images: [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "The historic Shikargah motif celebrates Persian and Mughal royal animalia woven with exquisite precision in rich antique zari on hand-dyed royal rani pink silk.",
-    details: [
-      "Fabric: Pure Handloom Satin Silk",
-      "Motifs: Elephants, Deers, Peacocks in dense floral jungle",
-      "Border: Heavy 6-inch zari temple border"
-    ],
-    dimensions: "Saree: 5.5 meters | Blouse: 1.0 meter",
-    stock: 6,
-    features: ["Historic Shikargah Motifs", "Handloom Silk Mark", "High-density weave"]
-  },
-  {
     id: "khaddi-georgette-banarasi-emerald",
     name: "Khaddi Georgette Banarasi Handloom Saree",
+    brand: "Mohey Silk Edit",
+    gender: "Women",
     tagline: "Feather-soft pure georgette hand-dyed with antique gold floral boota",
     price: 26500,
     originalPrice: 32000,
     currency: "INR",
     category: "Banarasi Sarees",
     subCategory: "Khaddi Georgette",
+    occasion: "Mehendi & Festive",
     collection: "Sacred Banarasi & Kashi Weaves",
     isNew: true,
     isBestseller: true,
@@ -175,157 +154,21 @@ export const defaultProducts = [
     features: ["Feather-light Khaddi Silk", "Rich Fluid Drape", "Silk Mark Guaranteed"]
   },
 
-  // ==========================================
-  // --- 2. KURTIS & DESIGNER KURTA SETS ---
-  // ==========================================
-  {
-    id: "chanderi-silk-embroidered-kurti-set",
-    name: "Zeenat Chanderi Silk Royal Kurti Set",
-    tagline: "Hand-embellished zardozi neckline with flared scalloped palazzos and organza dupatta",
-    price: 14500,
-    originalPrice: 18000,
-    currency: "INR",
-    category: "Kurtis",
-    subCategory: "Kurta Sets",
-    collection: "Imperial Kurtis & Festive Ensembles",
-    isNew: true,
-    isBestseller: true,
-    rating: 4.9,
-    reviewsCount: 45,
-    colors: [
-      { name: "Ivory Pearl", hex: "#FDFBF7" },
-      { name: "Powder Peach", hex: "#FADBD8" },
-      { name: "Dusty Lavender", hex: "#D7BDE2" }
-    ],
-    sizes: ["XS (34)", "S (36)", "M (38)", "L (40)", "XL (42)"],
-    images: [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "An epitome of royal grace. Crafted in pure Chanderi silk with intricate zardozi, sequins, and French knots on the yoke. Paired with flared palazzo trousers and a sheer hand-painted organza dupatta.",
-    details: [
-      "Fabric: 100% Pure Chanderi Silk with Mulmul Cotton lining",
-      "Work: Handcrafted Zardozi, Cutdana, and Gota Patti detailing",
-      "Set: Straight Long Kurti + Flared Palazzo + Hand-embroidered Dupatta"
-    ],
-    dimensions: "Kurta Length: 47 inches | Palazzo: 39 inches",
-    stock: 14,
-    features: ["3-Piece Festive Set", "Breathable Pure Chanderi", "Hand-stitched Zardozi"]
-  },
-  {
-    id: "chikankari-mukaish-georgette-kurta",
-    name: "Noor Chikankari & Mukaish Badla Kurta Set",
-    tagline: "Authentic Lucknowi hand-chikankari on whisper georgette with silver mukaish badla",
-    price: 16800,
-    originalPrice: 21000,
-    currency: "INR",
-    category: "Kurtis",
-    subCategory: "Chikankari Edit",
-    collection: "Imperial Kurtis & Festive Ensembles",
-    isNew: true,
-    isBestseller: true,
-    rating: 5.0,
-    reviewsCount: 57,
-    colors: [
-      { name: "Mint Green", hex: "#D4EFDF" },
-      { name: "Pastel Blush", hex: "#FADBD8" },
-      { name: "Sky Azure", hex: "#D6EAF8" }
-    ],
-    sizes: ["S (36)", "M (38)", "L (40)", "XL (42)"],
-    images: [
-      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1583391733975-081dd793ac02?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "Hand-embroidered by master women artisans in Lucknow with over 32 authentic stitches (Bakhiya, Phanda, Keel Kangan) complemented by gleaming silver Mukaish dots.",
-    details: [
-      "Fabric: High-grade Pure Viscose Georgette with attached Cotton Slip",
-      "Embroidery: Hand Chikankari & Pure Silver Wire Mukaish",
-      "Set: Anarkali-cut Kurti + Embroidered Pants + Chiffon Dupatta"
-    ],
-    dimensions: "Kurta Length: 49 inches",
-    stock: 10,
-    features: ["Authentic Lucknow Handcraft", "GI Certified Artisans", "Mukaish Badla Embellishment"]
-  },
-  {
-    id: "angrakha-raw-silk-festive-kurta",
-    name: "Mughlai Angrakha Pure Raw Silk Kurti Set",
-    tagline: "Overlapping royal Angrakha neckline with antique gold dabka tassels",
-    price: 19500,
-    originalPrice: 24000,
-    currency: "INR",
-    category: "Kurtis",
-    subCategory: "Angrakha Edit",
-    collection: "Imperial Kurtis & Festive Ensembles",
-    isNew: false,
-    isBestseller: true,
-    rating: 4.8,
-    reviewsCount: 38,
-    colors: [
-      { name: "Mustard Gold", hex: "#E59866" },
-      { name: "Deep Ruby", hex: "#922B21" }
-    ],
-    sizes: ["S", "M", "L", "XL", "Bespoke"],
-    images: [
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "Inspired by Mughal court attire, this flared Angrakha silhouette is crafted in handloom raw silk, finished with hand-crafted latkans and a pure Banarasi brocade dupatta.",
-    details: [
-      "Fabric: 100% Pure Raw Silk 70g",
-      "Neckline: Overlapping Angrakha with hand-sewn metallic tassels",
-      "Includes: Flared Angrakha Kurta, Cigarette Pants, and Banarasi Dupatta"
-    ],
-    dimensions: "Kurta Length: 50 inches",
-    stock: 8,
-    features: ["Angrakha Royal Flared Cut", "Pure Raw Silk Base", "Banarasi Brocade Dupatta"]
-  },
-  {
-    id: "velvet-zardozi-short-kurti-sharara",
-    name: "Nazneen Velvet Zardozi Kurti & Sharara Set",
-    tagline: "Opulent micro-velvet short kurti drenched in gold zardozi with tiered sharara",
-    price: 24500,
-    originalPrice: 30000,
-    currency: "INR",
-    category: "Kurtis",
-    subCategory: "Sharara Sets",
-    collection: "Imperial Kurtis & Festive Ensembles",
-    isNew: true,
-    isBestseller: false,
-    rating: 5.0,
-    reviewsCount: 29,
-    colors: [
-      { name: "Obsidian Black", hex: "#17202A" },
-      { name: "Emerald Pine", hex: "#145A32" }
-    ],
-    sizes: ["XS", "S", "M", "L"],
-    images: [
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1583391733975-081dd793ac02?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "The ultimate cocktail and winter festive ensemble. Velvet kurti paired with voluminous tiered georgette sharara and a gold-fringed net dupatta.",
-    details: [
-      "Fabric: Pure Silk Micro-Velvet Top with Silk Georgette Sharara",
-      "Work: Real Zardozi, Cutdana, and Marodi embroidery",
-      "Set: Short Embellished Kurti + Tiered Flared Sharara + Dupatta"
-    ],
-    dimensions: "Kurti Length: 36 inches | Sharara Length: 42 inches",
-    stock: 6,
-    features: ["Tiered Dramatic Sharara", "Pure Silk Velvet", "Winter Wedding Luxury"]
-  },
-
-  // ==========================================
-  // --- 3. IMPERIAL BRIDAL & ROYAL LEHENGAS ---
-  // ==========================================
+  // ============================================================
+  // --- 2. WOMEN (MOHEY) - BRIDAL & FESTIVE LEHENGAS ---
+  // ============================================================
   {
     id: "rajputana-crimson-bridal-lehenga",
     name: "Mehr-un-Nisa Crimson Rajputana Bridal Lehenga",
+    brand: "Mohey Bridal Masterpiece",
+    gender: "Women",
     tagline: "Heirloom scarlet raw silk with 32 kalis in dabka, zardozi and real pearls",
     price: 68000,
     originalPrice: 82000,
     currency: "INR",
     category: "Lehengas",
     subCategory: "Bridal Masterpiece",
+    occasion: "The Royal Wedding",
     collection: "Imperial Royal & Bridal Lehengas",
     isNew: true,
     isBestseller: true,
@@ -354,13 +197,16 @@ export const defaultProducts = [
   },
   {
     id: "royal-kashmiri-tilla-lehenga",
-    name: "Aura Tilla Embroidered Velvet Lehenga",
+    name: "Aura Tilla Embroidered Velvet Bridal Lehenga",
+    brand: "Mohey Bridal",
+    gender: "Women",
     tagline: "Heritage gold Kashmiri Tilla wirework on midnight obsidian velvet",
     price: 52000,
     originalPrice: 62000,
     currency: "INR",
     category: "Lehengas",
     subCategory: "Royal Couture",
+    occasion: "Reception & Sangeet",
     collection: "Imperial Royal & Bridal Lehengas",
     isNew: true,
     isBestseller: true,
@@ -391,12 +237,15 @@ export const defaultProducts = [
   {
     id: "noor-jahan-pearl-organza-lehenga",
     name: "Noor Jahan Ivory Pearl & Mukaish Pastel Lehenga",
+    brand: "Mohey Pastel Edit",
+    gender: "Women",
     tagline: "Powder ivory tissue organza laden with Swarovski crystal and silver gota patti",
     price: 48500,
     originalPrice: 58000,
     currency: "INR",
     category: "Lehengas",
     subCategory: "Pastel Luxury",
+    occasion: "Day Wedding & Mehendi",
     collection: "Imperial Royal & Bridal Lehengas",
     isNew: true,
     isBestseller: false,
@@ -423,110 +272,267 @@ export const defaultProducts = [
     features: ["Ultra Lightweight Silhouette", "Swarovski Crystals", "Pastel Day-Wedding Edit"]
   },
 
-  // ==========================================
-  // --- 4. ORGANZA, KANJIVARAM & ANARKALIS ---
-  // ==========================================
+  // ============================================================
+  // --- 3. WOMEN (MOHEY) - DESIGNER KURTIS & KURTA SETS ---
+  // ============================================================
+  {
+    id: "chanderi-silk-embroidered-kurti-set",
+    name: "Zeenat Chanderi Silk Royal Kurti Set",
+    brand: "Mohey Festive",
+    gender: "Women",
+    tagline: "Hand-embellished zardozi neckline with flared scalloped palazzos and organza dupatta",
+    price: 14500,
+    originalPrice: 18000,
+    currency: "INR",
+    category: "Kurtis & Suits",
+    subCategory: "Kurta Sets",
+    occasion: "Festive & Mehendi",
+    collection: "Imperial Kurtis & Festive Ensembles",
+    isNew: true,
+    isBestseller: true,
+    rating: 4.9,
+    reviewsCount: 45,
+    colors: [
+      { name: "Ivory Pearl", hex: "#FDFBF7" },
+      { name: "Powder Peach", hex: "#FADBD8" },
+      { name: "Dusty Lavender", hex: "#D7BDE2" }
+    ],
+    sizes: ["XS (34)", "S (36)", "M (38)", "L (40)", "XL (42)"],
+    images: [
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "An epitome of royal grace. Crafted in pure Chanderi silk with intricate zardozi, sequins, and French knots on the yoke. Paired with flared palazzo trousers and a sheer hand-painted organza dupatta.",
+    details: [
+      "Fabric: 100% Pure Chanderi Silk with Mulmul Cotton lining",
+      "Work: Handcrafted Zardozi, Cutdana, and Gota Patti detailing",
+      "Set: Straight Long Kurti + Flared Palazzo + Hand-embroidered Dupatta"
+    ],
+    dimensions: "Kurta Length: 47 inches | Palazzo: 39 inches",
+    stock: 14,
+    features: ["3-Piece Festive Set", "Breathable Pure Chanderi", "Hand-stitched Zardozi"]
+  },
+  {
+    id: "chikankari-mukaish-georgette-kurta",
+    name: "Noor Chikankari & Mukaish Badla Kurta Set",
+    brand: "Mohey Lucknowi",
+    gender: "Women",
+    tagline: "Authentic Lucknowi hand-chikankari on whisper georgette with silver mukaish badla",
+    price: 16800,
+    originalPrice: 21000,
+    currency: "INR",
+    category: "Kurtis & Suits",
+    subCategory: "Chikankari Edit",
+    occasion: "Haldi & Mehendi",
+    collection: "Imperial Kurtis & Festive Ensembles",
+    isNew: true,
+    isBestseller: true,
+    rating: 5.0,
+    reviewsCount: 57,
+    colors: [
+      { name: "Mint Green", hex: "#D4EFDF" },
+      { name: "Pastel Blush", hex: "#FADBD8" },
+      { name: "Sky Azure", hex: "#D6EAF8" }
+    ],
+    sizes: ["S (36)", "M (38)", "L (40)", "XL (42)"],
+    images: [
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1583391733975-081dd793ac02?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "Hand-embroidered by master women artisans in Lucknow with over 32 authentic stitches (Bakhiya, Phanda, Keel Kangan) complemented by gleaming silver Mukaish dots.",
+    details: [
+      "Fabric: High-grade Pure Viscose Georgette with attached Cotton Slip",
+      "Embroidery: Hand Chikankari & Pure Silver Wire Mukaish",
+      "Set: Anarkali-cut Kurti + Embroidered Pants + Chiffon Dupatta"
+    ],
+    dimensions: "Kurta Length: 49 inches",
+    stock: 10,
+    features: ["Authentic Lucknow Handcraft", "GI Certified Artisans", "Mukaish Badla Embellishment"]
+  },
+  {
+    id: "velvet-zardozi-short-kurti-sharara",
+    name: "Nazneen Velvet Zardozi Kurti & Sharara Set",
+    brand: "Mohey Royal",
+    gender: "Women",
+    tagline: "Opulent micro-velvet short kurti drenched in gold zardozi with tiered sharara",
+    price: 24500,
+    originalPrice: 30000,
+    currency: "INR",
+    category: "Kurtis & Suits",
+    subCategory: "Sharara Sets",
+    occasion: "Sangeet & Reception",
+    collection: "Imperial Kurtis & Festive Ensembles",
+    isNew: true,
+    isBestseller: false,
+    rating: 5.0,
+    reviewsCount: 29,
+    colors: [
+      { name: "Obsidian Black", hex: "#17202A" },
+      { name: "Emerald Pine", hex: "#145A32" }
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    images: [
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1583391733975-081dd793ac02?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "The ultimate cocktail and winter festive ensemble. Velvet kurti paired with voluminous tiered georgette sharara and a gold-fringed net dupatta.",
+    details: [
+      "Fabric: Pure Silk Micro-Velvet Top with Silk Georgette Sharara",
+      "Work: Real Zardozi, Cutdana, and Marodi embroidery",
+      "Set: Short Embellished Kurti + Tiered Flared Sharara + Dupatta"
+    ],
+    dimensions: "Kurti Length: 36 inches | Sharara Length: 42 inches",
+    stock: 6,
+    features: ["Tiered Dramatic Sharara", "Pure Silk Velvet", "Winter Wedding Luxury"]
+  },
+
+  // ============================================================
+  // --- 4. MEN (MANYAVAR) - ROYAL SHERWANIS & KURTAS ---
+  // ============================================================
+  {
+    id: "shahi-ivory-groom-sherwani",
+    name: "Shahi Ivory Zari Embroidered Groom Sherwani",
+    brand: "Manyavar Groom's Collection",
+    gender: "Men",
+    tagline: "Pure raw silk sherwani handcrafted with antique dabka wirework, matching stole and churidar",
+    price: 49500,
+    originalPrice: 59000,
+    currency: "INR",
+    category: "Sherwanis",
+    subCategory: "Groom Sherwani",
+    occasion: "The Royal Wedding",
+    collection: "The Grand Groom's Sherwani Edit",
+    isNew: true,
+    isBestseller: true,
+    rating: 5.0,
+    reviewsCount: 68,
+    colors: [
+      { name: "Ivory Pearl", hex: "#FDFBF7" },
+      { name: "Champagne Gold", hex: "#EAD6B8" }
+    ],
+    sizes: ["38 (S)", "40 (M)", "42 (L)", "44 (XL)", "Custom Groom Fit"],
+    images: [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "The definitive royal groom look. Crafted in textured raw silk with all-over intricate gold thread and dabka embroidery. Comes with matching embroidered safa, embellished stole, and churidar.",
+    details: [
+      "Fabric: Pure Textured Raw Silk with Silk lining",
+      "Embroidery: Antique Dabka, Sequins, and Gilded French Knots",
+      "Complete Set: Sherwani Coat + Silk Kurta + Churidar + Embroidered Stole"
+    ],
+    dimensions: "Sherwani Length: 45 inches | Tailored Fit",
+    stock: 6,
+    features: ["4-Piece Complete Groom Set", "Pure Raw Silk", "Bespoke Tailoring Included"]
+  },
+  {
+    id: "mustard-tussar-kurta-nehru-jacket",
+    name: "Mustard Tussar Silk Kurta with Brocade Nehru Jacket",
+    brand: "Manyavar Festive",
+    gender: "Men",
+    tagline: "Vibrant festive kurta set paired with pure Banarasi silk brocade Bundi jacket",
+    price: 18500,
+    originalPrice: 22500,
+    currency: "INR",
+    category: "Kurta Sets",
+    subCategory: "Nehru Jacket Sets",
+    occasion: "Haldi & Sangeet",
+    collection: "Men's Kurta Sets & Nehru Jackets",
+    isNew: true,
+    isBestseller: true,
+    rating: 4.9,
+    reviewsCount: 42,
+    colors: [
+      { name: "Haldi Mustard", hex: "#E59866" },
+      { name: "Pistachio Sage", hex: "#A9DFBF" }
+    ],
+    sizes: ["38", "40", "42", "44"],
+    images: [
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "A signature Manyavar celebration ensemble. Crafted in rich handloom Tussar silk with an opulent pure Banarasi brocade Nehru jacket featuring mother-of-pearl buttons.",
+    details: [
+      "Fabric: 100% Pure Tussar Silk Kurta + Banarasi Brocade Jacket",
+      "Set: Kurta + Churidar Pajama + Nehru Bundi Jacket",
+      "Buttons: Premium engraved brass & shell buttons"
+    ],
+    dimensions: "Kurta Length: 43 inches | Jacket: 28 inches",
+    stock: 15,
+    features: ["3-Piece Celebration Set", "Banarasi Brocade Jacket", "Lightweight Festive Luxury"]
+  },
+  {
+    id: "royal-wine-indo-western-sherwani",
+    name: "Maharaja Royal Wine Velvet Indo-Western Set",
+    brand: "Manyavar Indo-Western",
+    gender: "Men",
+    tagline: "Asymmetric sculpted velvet bandhgala jacket with cutdana and metallic zardozi",
+    price: 32000,
+    originalPrice: 38000,
+    currency: "INR",
+    category: "Indo-Western",
+    subCategory: "Bandhgala Suit",
+    occasion: "Reception & Sangeet",
+    collection: "The Grand Groom's Sherwani Edit",
+    isNew: false,
+    isBestseller: true,
+    rating: 5.0,
+    reviewsCount: 39,
+    colors: [
+      { name: "Royal Wine", hex: "#5B1425" },
+      { name: "Midnight Navy", hex: "#0E1A38" }
+    ],
+    sizes: ["38", "40", "42", "44"],
+    images: [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85"
+    ],
+    description: "Contemporary royalty. Designed with a dramatic asymmetric overlap, structured shoulder padding, and hand-embellished collar and cuff zardozi embroidery.",
+    details: [
+      "Fabric: Pure Silk Velvet with Satin Lapel lining",
+      "Work: Metal Zardozi & Cutdana work on collar and placket",
+      "Set: Indo-Western Jacket + Tailored Trousers + Silk Pocket Square"
+    ],
+    dimensions: "Jacket Length: 39 inches",
+    stock: 8,
+    features: ["Asymmetric Royal Cut", "Velvet Texture", "Modern Cocktail Ready"]
+  },
   {
     id: "ivory-organza-bloom",
     name: "Ivory Organza Bloom Hand-Painted Saree",
+    brand: "Mohey Organza Edit",
+    gender: "Women",
     tagline: "Hand-painted botanical motifs with antique zari scallop borders",
     price: 18400,
     originalPrice: 22000,
     currency: "INR",
-    category: "Sarees",
+    category: "Banarasi Sarees",
     subCategory: "Organza Edit",
-    collection: "Spring Atelier & Organza Edit",
+    occasion: "Day Wedding & Festive",
+    collection: "Sacred Banarasi & Kashi Weaves",
     isNew: true,
     isBestseller: true,
     rating: 4.9,
     reviewsCount: 38,
     colors: [
       { name: "Ivory Pearl", hex: "#FDFBF7" },
-      { name: "Blush Rose", hex: "#F3D5D8" },
-      { name: "Champagne Gold", hex: "#EAD6B8" }
+      { name: "Blush Rose", hex: "#F3D5D8" }
     ],
-    sizes: ["Unstitched (6.5m)", "Pre-Draped (S)", "Pre-Draped (M)", "Pre-Draped (L)"],
+    sizes: ["Unstitched (6.5m)", "Pre-Draped (S)", "Pre-Draped (M)"],
     images: [
       "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
     ],
-    description: "Crafted in whisper-light pure silk organza, the Ivory Organza Bloom is an ode to timeless grace. Meticulously hand-embroidered with micro-pearls, gilded resham threadwork, and finished with delicate scalloped edges.",
+    description: "Crafted in whisper-light pure silk organza, the Ivory Organza Bloom is an ode to timeless grace. Meticulously hand-embroidered with micro-pearls and scalloped edges.",
     details: [
-      "Fabric: 100% Pure Silk Organza with Silk Blend Blouse piece",
-      "Weave: Handwoven Kashi Weave with French Knot embroidery",
-      "Blouse: Comes with 1m matching unstitched embroidered raw silk fabric",
-      "Care: Dry Clean Only. Store in breathable muslin bag."
+      "Fabric: 100% Pure Silk Organza",
+      "Blouse: 1m unstitched raw silk fabric included",
+      "Care: Dry Clean Only"
     ],
-    dimensions: "Saree: 5.5 meters | Blouse: 1 meter unstitched",
+    dimensions: "Saree: 5.5 meters | Blouse: 1 meter",
     stock: 14,
-    features: ["Authentic Handloom Certified", "Lightweight Breathable Weave", "Eco-friendly natural dyes"]
-  },
-  {
-    id: "amethyst-kanjivaram-silk-saree",
-    name: "Amethyst Purple Kanjivaram Silk Saree",
-    tagline: "Pure mulberry silk with korvai woven pure gold zari temple borders",
-    price: 31500,
-    originalPrice: 36000,
-    currency: "INR",
-    category: "Sarees",
-    subCategory: "Kanjivaram Heritage",
-    collection: "Regalia Handloom Masterpieces",
-    isNew: false,
-    isBestseller: true,
-    rating: 5.0,
-    reviewsCount: 41,
-    colors: [
-      { name: "Royal Amethyst", hex: "#5C246E" },
-      { name: "Peacock Teal", hex: "#005F73" }
-    ],
-    sizes: ["Standard Saree (6.3m)"],
-    images: [
-      "https://images.unsplash.com/photo-1610030469668-935930062bdf?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "Hand-woven over 28 days by master artisans in Kanchipuram. Heavy 3-ply mulberry silk interlocked using the historic Korvai technique, adorned with peacock and lotus motifs.",
-    details: [
-      "Fabric: 100% Pure Mulberry Silk (Silk Mark Certified)",
-      "Zari: Tested Gold Zari (Silver wire base electroplated with gold)",
-      "Weight: 850 grams of pure heritage luxury"
-    ],
-    dimensions: "Saree: 5.5 meters | Blouse: 0.8 meter contrasting gold brocade",
-    stock: 5,
-    features: ["Silk Mark Certified", "Korvai Joint Weave", "Heritage Heirloom"]
-  },
-  {
-    id: "scarlet-raw-silk-anarkali",
-    name: "Scarlet Crimson Zardozi Anarkali",
-    tagline: "Deep scarlet pure raw silk with mughal jali zardozi handcraft",
-    price: 39900,
-    originalPrice: 48000,
-    currency: "INR",
-    category: "Anarkalis",
-    subCategory: "Heritage Sets",
-    collection: "Imperial Royal & Bridal Lehengas",
-    isNew: false,
-    isBestseller: true,
-    rating: 5.0,
-    reviewsCount: 44,
-    colors: [
-      { name: "Scarlet Crimson", hex: "#990011" },
-      { name: "Plum Royale", hex: "#4A154B" }
-    ],
-    sizes: ["S", "M", "L", "XL", "Custom Tailored"],
-    images: [
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
-    ],
-    description: "An heirloom piece celebrating classical Indian grandeur. Crafted in heavy pure raw silk with a dramatic umbrella cut flare, hand-embellished in heirloom zardozi and dabka embroidery.",
-    details: [
-      "Fabric: 100% Pure Raw Silk 80g with Banarasi weave dupatta",
-      "Embroidery: Dabka, Mukaish, Zardozi, and Gota Patti",
-      "Set includes: Floor length Anarkali, Churidar, and Heavy Organza Dupatta"
-    ],
-    dimensions: "Length: 56 inches | Kalis: 32 Kalis",
-    stock: 8,
-    features: ["Heirloom Quality", "Hand-stitched Dabka", "Pure Raw Silk"]
+    features: ["Authentic Handloom Certified", "Lightweight Breathable Weave"]
   }
 ];
 
@@ -534,6 +540,7 @@ export const defaultCollections = [
   {
     id: "banarasi-kashi-heritage",
     title: "Sacred Banarasi & Kashi Weaves",
+    brand: "Mohey by Manyavar",
     subtitle: "Authentic Kadwa, Katan & Molten Tissue",
     tag: "GI Tag Handlooms",
     description: "Centuries of sacred Kashi loom mastery. Exquisite Kadwa Katan silks, luminous molten gold tissue weaves, and vintage Jangla tapestries handwoven in Varanasi.",
@@ -542,18 +549,9 @@ export const defaultCollections = [
     badge: "Varanasi Masterpiece"
   },
   {
-    id: "imperial-kurtis-ensembles",
-    title: "Imperial Kurtis & Festive Ensembles",
-    subtitle: "Chanderi, Lucknowi Chikankari & Angrakha",
-    tag: "Festive Couture",
-    description: "Bespoke 3-piece Kurta sets, authentic handcrafted Chikankari Mukaish, and Mughal Angrakha silhouettes tailored with pure silk dupattas.",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1600&q=85",
-    itemCount: "28 Designer Sets",
-    badge: "Festive Edit"
-  },
-  {
     id: "imperial-bridal-lehengas",
     title: "Imperial Royal & Bridal Lehengas",
+    brand: "Mohey Bridal",
     subtitle: "Heirloom 32-Kali Flare & Mughal Zardozi",
     tag: "High Couture",
     description: "Opulent micro-velvet, pure raw silk, and whisper-soft sheer veils dripping in real Kashmiri Tilla, dabka, and pearl hand-embroidery.",
@@ -562,28 +560,51 @@ export const defaultCollections = [
     badge: "Royal Bridal Edit"
   },
   {
-    id: "spring-atelier-2026",
-    title: "Spring Atelier & Organza Edit",
-    subtitle: "Whispers of Flora & Sheer Pastels",
-    tag: "New Campaign",
-    description: "A celebration of weightless organza, hand-painted botanical silhouettes, and subtle crystal shimmer designed for modern royal celebrations.",
-    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85",
-    itemCount: "19 Silhouettes",
-    badge: "Runway Edit"
+    id: "the-groom-sherwani-edit",
+    title: "The Grand Groom's Sherwani Edit",
+    brand: "Manyavar Groom",
+    subtitle: "Pure Raw Silk, Dabka & Regal Stoles",
+    tag: "Groom's Special",
+    description: "Handcrafted groom sherwanis, asymmetric velvet Indo-Westerns, and royal accessories engineered for the grand Indian wedding.",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+    itemCount: "30 Royal Groom Sets",
+    badge: "Groom's Sovereign"
   },
   {
-    id: "regalia-handlooms",
-    title: "Regalia Handloom Masterpieces",
-    subtitle: "Pure Kanjivaram & Temple Korvai",
-    tag: "Artisanal Edition",
-    description: "Heavy 3-ply pure mulberry silks interlocked with authentic temple Korvai technique and pure gilded gold zari from master weavers.",
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1600&q=85",
-    itemCount: "28 Heirloom Weaves",
-    badge: "Museum Grade"
+    id: "imperial-kurtis-ensembles",
+    title: "Imperial Kurtis & Festive Ensembles",
+    brand: "Mohey Festive",
+    subtitle: "Chanderi, Lucknowi Chikankari & Angrakha",
+    tag: "Festive Couture",
+    description: "Bespoke 3-piece Kurta sets, authentic handcrafted Chikankari Mukaish, and Mughal Angrakha silhouettes tailored with pure silk dupattas.",
+    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1600&q=85",
+    itemCount: "28 Designer Sets",
+    badge: "Festive Edit"
+  },
+  {
+    id: "mens-kurta-nehru-jackets",
+    title: "Men's Kurta Sets & Nehru Jackets",
+    brand: "Manyavar Celebrations",
+    subtitle: "Tussar Silk Kurtas & Banarasi Bundis",
+    tag: "Celebration Wear",
+    description: "Vibrant festive kurta pajama sets paired with pure Banarasi brocade Nehru jackets for Sangeet, Mehendi, and family celebrations.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1600&q=85",
+    itemCount: "35 Celebration Sets",
+    badge: "Festive Must-Have"
   }
 ];
 
 export const defaultStories = [
+  {
+    id: "taiyaar-hoke-aaiye",
+    title: "Taiyaar Hoke Aaiye: The Essence of Indian Weddings",
+    readTime: "4 min read",
+    category: "Celebration Heritage",
+    date: "Wedding Season 2026",
+    excerpt: "Why dressing up in timeless handloom silks and royal zardozi weaves transforms ordinary celebrations into unforgettable memories.",
+    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
+    quote: "When you wear your heritage, you celebrate your timeless identity."
+  },
   {
     id: "art-of-banarasi",
     title: "The Sacred Weft: Inside the Looms of Varanasi",
@@ -595,23 +616,13 @@ export const defaultStories = [
     quote: "Every Banarasi saree is a living hymn sung across thousands of silk warp threads."
   },
   {
-    id: "kashmiri-tilla-legacy",
-    title: "Tilla: The Golden Wire of the Kashmir Valley",
+    id: "groom-trousseau-guide",
+    title: "The Royal Groom's Definitive Styling Guide",
     readTime: "6 min read",
-    category: "Royal Embroidery",
+    category: "Groom's Special",
     date: "March 2026",
-    excerpt: "Documenting the master karigars of Srinagar who weave precious silver and gold wires into timeless bridal lehenga heirlooms.",
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
-    quote: "A single imperial bridal lehenga takes four master artisans over 160 days to complete."
-  },
-  {
-    id: "organza-botanical-whispers",
-    title: "The Sheer Poetry of Hand-Painted Silk Organza",
-    readTime: "4 min read",
-    category: "Craftsmanship",
-    date: "February 2026",
-    excerpt: "Exploring the delicate balance between structural transparency and soft botanical brushstrokes in haute couture sarees.",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
-    quote: "Organza holds the quiet whisper of loom, air, and morning light."
+    excerpt: "From royal ivory raw silk sherwanis to handcrafted safas and emerald neckpieces: curate your dream wedding ensemble.",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+    quote: "Every groom deserves to look like an emperor on his grand wedding day."
   }
 ];

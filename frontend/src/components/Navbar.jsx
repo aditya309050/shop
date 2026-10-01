@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useShop } from '../context/ShopContext';
 import { 
   ShoppingBag, 
   Heart, 
   Search, 
   Menu, 
   X, 
-  ChevronDown, 
-  Sparkles,
-  Volume2,
-  VolumeX,
-  Globe
+  Sparkles, 
+  Crown,
+  Volume2, 
+  VolumeX, 
+  PhoneCall, 
+  ChevronDown,
+  Compass,
+  CalendarCheck
 } from 'lucide-react';
+import { useShop } from '../context/ShopContext';
 
 export default function Navbar({ onNavigateSection, onNavigatePage, currentPage, audioPlaying, toggleAudio }) {
   const { 
     cartCount, 
-    wishlist, 
+    wishlistCount, 
     setIsCartOpen, 
     setIsWishlistOpen, 
     setIsSearchOpen,
@@ -29,22 +32,25 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
+  const [activeGenderTab, setActiveGenderTab] = useState('ALL'); // 'ALL' | 'MEN' | 'WOMEN'
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { label: 'Home', id: 'home', page: 'home' },
-    { label: 'Banarasi Sarees', id: 'products', category: 'Banarasi Sarees' },
-    { label: 'Royal Lehengas', id: 'products', category: 'Lehengas' },
-    { label: 'Collections', page: 'collections' },
-    { label: 'Lookbook', id: 'trends' },
-    { label: 'Bespoke Salon', action: () => openBespoke() },
+    { label: 'HOME', page: 'home' },
+    { label: 'MEN (MANYAVAR)', category: 'Men', id: 'products' },
+    { label: 'WOMEN (MOHEY)', category: 'Women', id: 'products' },
+    { label: 'BANARASI SAREES', category: 'Banarasi Sarees', id: 'products' },
+    { label: 'BRIDAL LEHENGAS', category: 'Lehengas', id: 'products' },
+    { label: 'KURTIS & SUITS', category: 'Kurtis & Suits', id: 'products' },
+    { label: 'COLLECTIONS', page: 'collections' },
+    { label: 'BESPOKE APPOINTMENT', action: () => openBespoke() },
   ];
 
   const handleLinkClick = (link) => {
@@ -58,7 +64,7 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
       return;
     }
     if (onNavigateSection) {
-      onNavigateSection(link.id, link.category);
+      onNavigateSection(link.id || 'products', link.category);
     }
   };
 
@@ -66,20 +72,65 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
     <>
       {/* Top Luxury Announcement Bar */}
       <div style={{
-        background: 'linear-gradient(90deg, #111115 0%, #1c1812 50%, #111115 100%)',
-        borderBottom: '1px solid rgba(197, 160, 89, 0.2)',
-        padding: '7px 20px',
-        fontSize: '0.72rem',
-        letterSpacing: '0.2em',
+        background: 'linear-gradient(90deg, #121014 0%, #2a0810 50%, #121014 100%)',
+        borderBottom: '1px solid rgba(197, 160, 89, 0.25)',
+        padding: '8px 24px',
+        fontSize: '0.74rem',
+        letterSpacing: '0.16em',
         textTransform: 'uppercase',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        color: '#d6c29e'
+        color: '#eaddc5',
+        position: 'relative',
+        zIndex: 51
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Sparkles size={12} color="#c5a059" />
-          <span>Complimentary Global Bespoke Concierge & White-Glove Shipping</span>
+          <Crown size={13} color="#c5a059" />
+          <span style={{ fontWeight: 600, color: '#f3e5ab' }}>TAIYAAR HOKE AAIYE</span>
+          <span style={{ opacity: 0.6 }}>|</span>
+          <span style={{ display: 'none', md: 'inline' }}>Grand Festive & Wedding Edit 2026</span>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button
+            onClick={() => openBespoke()}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#c5a059',
+              fontSize: '0.72rem',
+              fontFamily: 'var(--font-cinzel)',
+              letterSpacing: '0.12em',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              cursor: 'pointer'
+            }}
+          >
+            <CalendarCheck size={12} />
+            <span>Book Video Call / Salon Appointment</span>
+          </button>
+
+          {/* Audio Atmosphere Toggle */}
+          <button
+            onClick={toggleAudio}
+            style={{
+              background: 'rgba(197, 160, 89, 0.1)',
+              border: '1px solid rgba(197, 160, 89, 0.3)',
+              borderRadius: '20px',
+              padding: '2px 10px',
+              color: audioPlaying ? '#c5a059' : '#888',
+              fontSize: '0.68rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            {audioPlaying ? <Volume2 size={11} /> : <VolumeX size={11} />}
+            <span>{audioPlaying ? 'Sound On' : 'Sound Off'}</span>
+          </button>
         </div>
       </div>
 
@@ -89,116 +140,89 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
           position: 'sticky',
           top: 0,
           zIndex: 50,
-          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-          background: isScrolled ? 'rgba(9, 9, 11, 0.94)' : 'rgba(9, 9, 11, 0.75)',
+          transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+          background: isScrolled ? 'rgba(10, 10, 14, 0.96)' : 'rgba(12, 12, 16, 0.90)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: isScrolled ? '1px solid rgba(197, 160, 89, 0.2)' : '1px solid rgba(255, 255, 255, 0.05)',
-          padding: isScrolled ? '14px 32px' : '22px 32px'
+          borderBottom: '1px solid rgba(197, 160, 89, 0.25)',
+          boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.8)' : 'none'
         }}
       >
         <div style={{
           maxWidth: '1440px',
           margin: '0 auto',
+          padding: '0 24px',
+          height: isScrolled ? '72px' : '82px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          transition: 'height 0.3s ease'
         }}>
           {/* Mobile Menu Trigger */}
           <button
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
               background: 'transparent',
               border: 'none',
-              color: '#faf8f5',
+              color: '#eaddc5',
               cursor: 'pointer',
               display: 'none',
+              alignItems: 'center',
               padding: '6px'
             }}
-            className="mobile-only-btn"
-            aria-label="Open Navigation Menu"
+            className="mobile-menu-btn"
           >
-            <Menu size={22} />
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Desktop Left Navigation Links */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
-            {navLinks.slice(0, 3).map((link) => {
-              const isActive = (link.page === 'home' && currentPage === 'home') || (link.page && link.page === currentPage);
-              return (
-                <button
-                  key={link.label}
-                  onClick={() => handleLinkClick(link)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    color: isActive ? '#c5a059' : '#d1cdc7',
-                    fontSize: '0.78rem',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    fontFamily: 'var(--font-cinzel)',
-                    position: 'relative',
-                    padding: '4px 0',
-                    transition: 'color 0.3s',
-                    fontWeight: isActive ? 600 : 400
-                  }}
-                  onMouseEnter={(e) => e.target.style.color = '#c5a059'}
-                  onMouseLeave={(e) => e.target.style.color = isActive ? '#c5a059' : '#d1cdc7'}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: '15%',
-                      right: '15%',
-                      height: '1px',
-                      background: '#c5a059'
-                    }} />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Center Brand Identity */}
+          {/* Brand Logo - Manyavar & Mohey Heritage Style */}
           <div 
-            onClick={() => {
-              if (onNavigatePage) onNavigatePage('home');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            style={{ 
-              textAlign: 'center', 
-              cursor: 'pointer',
-              userSelect: 'none'
-            }}
+            onClick={() => onNavigatePage && onNavigatePage('home')}
+            style={{ cursor: 'pointer', textAlign: 'left' }}
           >
             <div style={{
-              fontFamily: 'var(--font-serif-display)',
-              fontSize: isScrolled ? '1.5rem' : '1.85rem',
-              letterSpacing: '0.22em',
-              fontWeight: 400,
-              color: '#faf8f5',
-              transition: 'font-size 0.3s'
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}>
-              ATELIER VÉRONIQUE
+              <span style={{
+                fontFamily: 'var(--font-serif-display)',
+                fontSize: isScrolled ? '1.55rem' : '1.85rem',
+                fontWeight: 600,
+                letterSpacing: '0.06em',
+                color: '#faf8f5',
+                transition: 'font-size 0.3s ease',
+                textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+              }}>
+                MANYAVAR <span style={{ color: '#c5a059', fontWeight: 300 }}>&</span> MOHEY
+              </span>
             </div>
             <div style={{
-              fontSize: '0.58rem',
-              letterSpacing: '0.45em',
+              fontSize: '0.62rem',
+              letterSpacing: '0.3em',
               color: '#c5a059',
+              fontFamily: 'var(--font-cinzel)',
               textTransform: 'uppercase',
               marginTop: '-2px'
             }}>
-              Haute Couture • Paris • Mumbai
+              Celebration Wear • Paris • Mumbai • Varanasi
             </div>
           </div>
 
-          {/* Desktop Right Navigation Links */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
-            {navLinks.slice(3).map((link) => {
-              const isActive = link.page && link.page === currentPage;
+          {/* Desktop Navigation Links */}
+          <nav 
+            className="desktop-nav"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px'
+            }}
+          >
+            {navLinks.map((link) => {
+              const isCollectionsActive = link.page === 'collections' && currentPage === 'collections';
+              const isHomeActive = link.page === 'home' && currentPage === 'home';
+              const isActive = isCollectionsActive || (isHomeActive && !link.category);
+
               return (
                 <button
                   key={link.label}
@@ -206,29 +230,32 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
                   style={{
                     background: 'transparent',
                     border: 'none',
-                    color: isActive ? '#c5a059' : '#d1cdc7',
-                    fontSize: '0.78rem',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
                     fontFamily: 'var(--font-cinzel)',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: isActive ? '#c5a059' : '#e0d8cc',
+                    fontWeight: isActive ? 700 : 500,
+                    cursor: 'pointer',
+                    padding: '8px 4px',
                     position: 'relative',
-                    padding: '4px 0',
-                    transition: 'color 0.3s',
-                    fontWeight: isActive ? 600 : 400
+                    transition: 'color 0.25s ease'
                   }}
-                  onMouseEnter={(e) => e.target.style.color = '#c5a059'}
-                  onMouseLeave={(e) => e.target.style.color = isActive ? '#c5a059' : '#d1cdc7'}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#c5a059'}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = '#e0d8cc';
+                  }}
                 >
                   {link.label}
                   {isActive && (
-                    <span style={{
+                    <div style={{
                       position: 'absolute',
-                      bottom: 0,
-                      left: '15%',
-                      right: '15%',
-                      height: '1px',
-                      background: '#c5a059'
+                      bottom: '0',
+                      left: '0',
+                      right: '0',
+                      height: '2px',
+                      background: 'linear-gradient(90deg, #c5a059, #faf8f5)',
+                      borderRadius: '1px'
                     }} />
                   )}
                 </button>
@@ -236,166 +263,194 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
             })}
           </nav>
 
-          {/* Action Icons */}
+          {/* Right Actions: Currency, Search, Wishlist, Bag */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-            {/* Search Icon */}
+            {/* Currency Selector */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
+                style={{
+                  background: 'rgba(25, 25, 32, 0.7)',
+                  border: '1px solid rgba(197, 160, 89, 0.3)',
+                  borderRadius: '30px',
+                  padding: '6px 14px',
+                  color: '#eaddc5',
+                  fontSize: '0.74rem',
+                  fontFamily: 'var(--font-cinzel)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
+              >
+                <span>{currency}</span>
+                <ChevronDown size={12} color="#c5a059" />
+              </button>
+
+              {showCurrencyDropdown && (
+                <div style={{
+                  position: 'absolute',
+                  top: '110%',
+                  right: 0,
+                  background: '#121217',
+                  border: '1px solid rgba(197, 160, 89, 0.4)',
+                  borderRadius: '6px',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.8)',
+                  zIndex: 60,
+                  minWidth: '100px',
+                  overflow: 'hidden'
+                }}>
+                  {currencies.map(c => (
+                    <div
+                      key={c}
+                      onClick={() => {
+                        setCurrency(c);
+                        setShowCurrencyDropdown(false);
+                      }}
+                      style={{
+                        padding: '8px 14px',
+                        fontSize: '0.75rem',
+                        color: currency === c ? '#c5a059' : '#faf8f5',
+                        cursor: 'pointer',
+                        fontFamily: 'var(--font-cinzel)',
+                        background: currency === c ? 'rgba(197,160,89,0.15)' : 'transparent'
+                      }}
+                    >
+                      {c}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#faf8f5',
+                color: '#eaddc5',
                 cursor: 'pointer',
                 padding: '6px',
-                transition: 'transform 0.2s, color 0.2s'
+                display: 'flex',
+                alignItems: 'center',
+                transition: 'color 0.2s'
               }}
-              aria-label="Search Silhouettes"
               onMouseEnter={(e) => e.currentTarget.style.color = '#c5a059'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#faf8f5'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#eaddc5'}
+              title="Search Collections"
             >
-              <Search size={19} />
+              <Search size={20} />
             </button>
 
-            {/* Wishlist Icon */}
+            {/* Wishlist Icon with Counter Badge */}
             <button
               onClick={() => setIsWishlistOpen(true)}
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#faf8f5',
+                color: '#eaddc5',
                 cursor: 'pointer',
                 padding: '6px',
                 position: 'relative',
-                transition: 'transform 0.2s, color 0.2s'
+                display: 'flex',
+                alignItems: 'center',
+                transition: 'color 0.2s'
               }}
-              aria-label="View Wishlist"
               onMouseEnter={(e) => e.currentTarget.style.color = '#c5a059'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#faf8f5'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#eaddc5'}
+              title="Wishlist"
             >
-              <Heart size={19} />
-              {wishlist.length > 0 && (
+              <Heart size={20} />
+              {wishlistCount > 0 && (
                 <span style={{
                   position: 'absolute',
-                  top: '0px',
-                  right: '0px',
-                  background: '#c5a059',
-                  color: '#0c0c0e',
-                  fontSize: '0.62rem',
+                  top: '-2px',
+                  right: '-2px',
+                  background: '#8A1C2C',
+                  color: '#fff',
+                  fontSize: '0.65rem',
                   fontWeight: 700,
-                  width: '15px',
-                  height: '15px',
+                  width: '18px',
+                  height: '18px',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  border: '1px solid #c5a059'
                 }}>
-                  {wishlist.length}
+                  {wishlistCount}
                 </span>
               )}
             </button>
 
-            {/* Cart / Atelier Bag Icon */}
+            {/* Cart Bag Icon with Counter Badge */}
             <button
               onClick={() => setIsCartOpen(true)}
               style={{
-                background: 'rgba(197, 160, 89, 0.12)',
-                border: '1px solid rgba(197, 160, 89, 0.35)',
-                color: '#faf8f5',
+                background: 'linear-gradient(135deg, #c5a059 0%, #9a7632 100%)',
+                border: 'none',
+                color: '#0a0a0d',
+                borderRadius: '30px',
+                padding: '8px 18px',
                 cursor: 'pointer',
-                padding: '7px 14px',
-                borderRadius: '2px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                fontSize: '0.75rem',
                 fontFamily: 'var(--font-cinzel)',
-                letterSpacing: '0.12em',
-                transition: 'all 0.3s ease'
+                fontWeight: 700,
+                fontSize: '0.78rem',
+                letterSpacing: '0.1em',
+                boxShadow: '0 4px 15px rgba(197, 160, 89, 0.35)',
+                transition: 'transform 0.2s, box-shadow 0.2s'
               }}
-              aria-label="Open Shopping Bag"
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(197, 160, 89, 0.25)';
-                e.currentTarget.style.borderColor = '#c5a059';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 22px rgba(197, 160, 89, 0.5)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(197, 160, 89, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(197, 160, 89, 0.35)';
               }}
             >
-              <ShoppingBag size={17} color="#c5a059" />
+              <ShoppingBag size={16} />
               <span>BAG ({cartCount})</span>
             </button>
           </div>
         </div>
-      </header>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'rgba(9, 9, 11, 0.98)',
-          zIndex: 100,
-          padding: '30px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          backdropFilter: 'blur(25px)'
-        }}>
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-              <div style={{ fontFamily: 'var(--font-serif-display)', fontSize: '1.3rem', letterSpacing: '0.2em' }}>
-                ATELIER VÉRONIQUE
-              </div>
-              <button 
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ background: 'transparent', border: 'none', color: '#faf8f5', cursor: 'pointer' }}
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div style={{
+            background: '#0d0d12',
+            borderTop: '1px solid rgba(197, 160, 89, 0.3)',
+            padding: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px'
+          }}>
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => handleLinkClick(link)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#eaddc5',
+                  fontFamily: 'var(--font-cinzel)',
+                  fontSize: '0.85rem',
+                  letterSpacing: '0.14em',
+                  textAlign: 'left',
+                  padding: '8px 0',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)'
+                }}
               >
-                <X size={26} />
+                {link.label}
               </button>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleLinkClick(link)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    textAlign: 'left',
-                    color: '#faf8f5',
-                    fontSize: '1.25rem',
-                    fontFamily: 'var(--font-serif-display)',
-                    letterSpacing: '0.1em',
-                    cursor: 'pointer',
-                    padding: '8px 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.06)'
-                  }}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
-
-          <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(197, 160, 89, 0.2)', fontSize: '0.8rem', color: '#a0a0aa' }}>
-            <p>Concierge WhatsApp: +91 (0) 98200 12000</p>
-            <p style={{ marginTop: '6px' }}>Private Salon Viewings by Appointment</p>
-          </div>
-        </div>
-      )}
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-only-btn {
-            display: block !important;
-          }
-        }
-      `}</style>
+        )}
+      </header>
     </>
   );
 }

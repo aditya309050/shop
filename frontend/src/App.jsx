@@ -7,7 +7,9 @@ import { ShopProvider, useShop } from './context/ShopContext';
 import { defaultProducts, defaultCollections, defaultStories } from './data/defaultData';
 
 import Navbar from './components/Navbar';
+import CategoryStories from './components/CategoryStories';
 import Hero from './components/Hero';
+import OccasionsGrid from './components/OccasionsGrid';
 import CollectionBanner from './components/CollectionBanner';
 import ProductGrid from './components/ProductGrid';
 import HorizontalTrends from './components/HorizontalTrends';
@@ -183,24 +185,35 @@ function MainContent() {
           onBackHome={() => handleNavigatePage('home')}
         />
       ) : (
-        /* Salon Home Experience */
+        /* Manyavar & Mohey Celebration Home Experience */
         <>
-          {/* Hero Runway Section */}
+          {/* Circular Category Story Highlights (Manyavar Style) */}
+          <CategoryStories 
+            activeCategory={activeCategoryFilter}
+            onSelectCategory={(cat) => handleNavigate('products', cat)}
+          />
+
+          {/* Hero Festive Wedding Campaign */}
           <Hero 
             onExploreClick={() => handleNavigatePage('collections')}
-            onViewLookbook={() => handleNavigate('trends')}
+            onViewCategory={(gender) => handleNavigate('products', gender)}
+          />
+
+          {/* Shop By Celebration Occasions (Manyavar Feature) */}
+          <OccasionsGrid 
+            onSelectOccasion={(occ) => handleNavigate('products', occ)}
+          />
+
+          {/* Signature Catalog & Filter Grid */}
+          <ProductGrid 
+            products={products}
+            initialCategory={activeCategoryFilter}
           />
 
           {/* Collection Campaigns Banner */}
           <CollectionBanner 
             collections={collections}
             onSelectCollection={handleSelectCollection}
-          />
-
-          {/* Signature Silhouettes Product Grid */}
-          <ProductGrid 
-            products={products}
-            initialCategory={activeCategoryFilter}
           />
 
           {/* Horizontal Trends Lookbook Strip */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
-import { Heart, Eye, ShoppingBag, Star, Sparkles } from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Star, Sparkles, ShieldCheck } from 'lucide-react';
 
 export default function ProductCard({ product }) {
   const { 
@@ -13,119 +13,45 @@ export default function ProductCard({ product }) {
 
   const [isHovered, setIsHovered] = useState(false);
   const [selectedColor, setSelectedColor] = useState(product.colors?.[0]);
-  const [tilt, setTilt] = useState({ x: 0, y: 0, mouseX: 50, mouseY: 50 });
   const isWishlisted = isInWishlist(product.id);
 
   const primaryImg = product.images?.[0];
   const secondaryImg = product.images?.[1] || primaryImg;
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -5;
-    const rotateY = ((x - centerX) / centerX) * 5;
-    const mousePercentX = (x / rect.width) * 100;
-    const mousePercentY = (y / rect.height) * 100;
-
-    setTilt({ x: rotateX, y: rotateY, mouseX: mousePercentX, mouseY: mousePercentY });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0, mouseX: 50, mouseY: 50 });
-  };
+  // Calculate discount percent
+  const discountPercent = product.originalPrice 
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : null;
 
   return (
     <div 
-      className="glass-card"
-      data-cursor="VIEW"
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        borderRadius: '2px',
-        overflow: 'hidden',
-        background: '#121217',
-        border: '1px solid rgba(255, 255, 255, 0.07)',
-        transform: isHovered ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-6px)` : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)',
-        boxShadow: isHovered ? '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(197, 160, 89, 0.12)' : 'none',
-        transition: isHovered ? 'transform 0.1s ease-out, box-shadow 0.3s ease' : 'transform 0.5s ease, box-shadow 0.5s ease',
-        '--mouse-x': `${tilt.mouseX}%`,
-        '--mouse-y': `${tilt.mouseY}%`
-      }}
-      onMouseMove={handleMouseMove}
+      className="group relative flex flex-col bg-[#111116] border border-white/10 hover:border-gold/50 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-gold/15 hover:-translate-y-1.5"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Specular Golden Shine Overlay */}
-      <div className="card-shine-effect" />
       {/* Image Showcase Container */}
       <div 
-        style={{
-          position: 'relative',
-          width: '100%',
-          paddingTop: '135%', // Elegant 3:4 high-fashion aspect ratio
-          overflow: 'hidden',
-          backgroundColor: '#18181d',
-          cursor: 'pointer'
-        }}
+        className="relative w-full pt-[136%] overflow-hidden bg-[#18181f] cursor-pointer"
         onClick={() => setSelectedProduct(product)}
       >
         <img 
           src={isHovered ? secondaryImg : primaryImg} 
           alt={product.name}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease',
-            transform: isHovered ? 'scale(1.06)' : 'scale(1)',
-            opacity: 1
-          }}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
-        {/* Badge Ribbons */}
-        <div style={{
-          position: 'absolute',
-          top: '14px',
-          left: '14px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px',
-          zIndex: 5
-        }}>
-          {product.isNew && (
-            <span style={{
-              background: 'rgba(9, 9, 11, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid #c5a059',
-              color: '#c5a059',
-              fontSize: '0.62rem',
-              fontFamily: 'var(--font-cinzel)',
-              letterSpacing: '0.16em',
-              padding: '3px 8px',
-              textTransform: 'uppercase'
-            }}>
-              New Edition
+        {/* Gradient Shadow Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111116] via-transparent to-black/20 opacity-60" />
+
+        {/* Brand / Edition Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+          {product.brand && (
+            <span className="bg-black/85 backdrop-blur-md text-gold text-[0.62rem] font-cinzel font-bold tracking-wider px-2.5 py-0.5 rounded-sm border border-gold/40 uppercase">
+              {product.brand}
             </span>
           )}
           {product.isBestseller && (
-            <span style={{
-              background: 'rgba(104, 17, 32, 0.85)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(216, 159, 146, 0.4)',
-              color: '#faf8f5',
-              fontSize: '0.62rem',
-              fontFamily: 'var(--font-cinzel)',
-              letterSpacing: '0.16em',
-              padding: '3px 8px',
-              textTransform: 'uppercase'
-            }}>
+            <span className="bg-royal-crimson text-white text-[0.6rem] font-cinzel font-bold tracking-wider px-2 py-0.5 rounded-sm uppercase">
               Bestseller
             </span>
           )}
@@ -137,228 +63,109 @@ export default function ProductCard({ product }) {
             e.stopPropagation();
             toggleWishlist(product);
           }}
-          style={{
-            position: 'absolute',
-            top: '14px',
-            right: '14px',
-            zIndex: 10,
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            background: 'rgba(9, 9, 11, 0.75)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            color: isWishlisted ? '#c5a059' : '#faf8f5',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}
-          aria-label="Save to Wishlist"
+          className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-300 z-20 cursor-pointer ${
+            isWishlisted 
+              ? 'bg-royal-crimson text-white scale-110 shadow-lg' 
+              : 'bg-black/60 text-white/80 hover:bg-gold hover:text-black border border-white/10'
+          }`}
+          title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         >
-          <Heart size={16} fill={isWishlisted ? '#c5a059' : 'none'} color={isWishlisted ? '#c5a059' : '#faf8f5'} />
+          <Heart size={16} fill={isWishlisted ? "currentColor" : "none"} />
         </button>
 
-        {/* Quick View Hover Curtain */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          padding: '16px',
-          background: 'linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.95) 100%)',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '10px',
-          transform: isHovered ? 'translateY(0)' : 'translateY(100%)',
-          opacity: isHovered ? 1 : 0,
-          transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
-          zIndex: 10
-        }}>
+        {/* Floating Quick Action Buttons on Hover */}
+        <div className="absolute inset-x-3 bottom-3 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(product, 1, selectedColor?.name || 'Standard');
+            }}
+            className="flex-1 py-2.5 bg-gradient-to-r from-gold via-gold-bright to-gold-dark text-black font-cinzel font-bold text-[0.7rem] tracking-wider uppercase rounded-sm flex items-center justify-center gap-1.5 shadow-lg cursor-pointer hover:brightness-110 transition-all"
+          >
+            <ShoppingBag size={13} />
+            <span>Add To Bag</span>
+          </button>
+
           <button
             onClick={(e) => {
               e.stopPropagation();
               setSelectedProduct(product);
             }}
-            style={{
-              flex: 1,
-              padding: '10px 14px',
-              background: 'rgba(255, 255, 255, 0.9)',
-              color: '#0c0c0e',
-              border: 'none',
-              fontFamily: 'var(--font-cinzel)',
-              fontSize: '0.72rem',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              fontWeight: 600
-            }}
+            className="w-10 h-10 bg-black/80 hover:bg-white hover:text-black border border-white/20 text-white rounded-sm flex items-center justify-center transition-all cursor-pointer"
+            title="Quick View"
           >
-            <Eye size={14} />
-            <span>Quick View</span>
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product, selectedColor, product.sizes[0], 1);
-            }}
-            style={{
-              padding: '10px 14px',
-              background: '#c5a059',
-              color: '#0c0c0e',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            title="Add to Atelier Bag"
-          >
-            <ShoppingBag size={15} />
+            <Eye size={15} />
           </button>
         </div>
       </div>
 
-      {/* Product Information */}
-      <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+      {/* Product Details Section */}
+      <div className="p-4 flex flex-col flex-1 justify-between bg-[#111116] space-y-3">
         <div>
-          {/* Category & Rating */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{
-              fontSize: '0.68rem',
-              fontFamily: 'var(--font-cinzel)',
-              letterSpacing: '0.16em',
-              color: '#c5a059',
-              textTransform: 'uppercase'
-            }}>
-              {product.category} • {product.subCategory}
+          {/* Subcategory & Rating */}
+          <div className="flex items-center justify-between text-xs text-[#a09885] mb-1">
+            <span className="font-cinzel tracking-wider uppercase text-[0.68rem] text-gold/80">
+              {product.subCategory || product.category}
             </span>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.72rem', color: '#e2c17c' }}>
-              <Star size={12} fill="#e2c17c" color="#e2c17c" />
-              <span>{product.rating}</span>
+            <div className="flex items-center gap-1 text-gold text-[0.7rem] font-semibold">
+              <Star size={11} fill="currentColor" />
+              <span>{product.rating || '4.9'}</span>
+              <span className="text-white/40">({product.reviewsCount || 24})</span>
             </div>
           </div>
 
-          {/* Title */}
+          {/* Product Title */}
           <h3 
             onClick={() => setSelectedProduct(product)}
-            style={{
-              fontFamily: 'var(--font-serif-display)',
-              fontSize: '1.25rem',
-              fontWeight: 400,
-              color: '#faf8f5',
-              cursor: 'pointer',
-              lineHeight: 1.3,
-              marginBottom: '6px',
-              transition: 'color 0.2s'
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#c5a059'}
-            onMouseLeave={(e) => e.target.style.color = '#faf8f5'}
+            className="font-serif-display text-base font-normal text-ivory tracking-wide hover:text-gold transition-colors cursor-pointer line-clamp-1"
           >
             {product.name}
           </h3>
 
-          {/* Tagline / Subtitle */}
-          <p style={{
-            fontFamily: 'var(--font-serif-editorial)',
-            fontSize: '0.9rem',
-            color: '#a0a0aa',
-            lineHeight: 1.4,
-            marginBottom: '14px',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden'
-          }}>
+          {/* Tagline */}
+          <p className="text-xs text-[#b0a89a] line-clamp-1 mt-1 font-editorial italic">
             {product.tagline}
           </p>
         </div>
 
-        <div>
-          {/* Swatches */}
+        {/* Colors Swatches & Pricing */}
+        <div className="pt-2 border-t border-white/5 flex items-center justify-between">
+          {/* Price with Discount */}
+          <div className="flex items-baseline gap-2">
+            <span className="font-cinzel text-base font-bold text-gold">
+              {formatPrice(product.price)}
+            </span>
+            {product.originalPrice && (
+              <span className="text-xs text-white/40 line-through">
+                {formatPrice(product.originalPrice)}
+              </span>
+            )}
+            {discountPercent && (
+              <span className="text-[0.65rem] text-emerald-400 font-bold tracking-wider">
+                {discountPercent}% OFF
+              </span>
+            )}
+          </div>
+
+          {/* Color Dots */}
           {product.colors && product.colors.length > 0 && (
-            <div style={{ display: 'flex', gap: '6px', marginBottom: '14px', alignItems: 'center' }}>
-              {product.colors.map(color => (
-                <button
-                  key={color.name}
-                  onClick={() => setSelectedColor(color)}
-                  style={{
-                    width: '16px',
-                    height: '16px',
-                    borderRadius: '50%',
-                    backgroundColor: color.hex,
-                    border: selectedColor?.name === color.name ? '2px solid #c5a059' : '1px solid rgba(255,255,255,0.2)',
-                    cursor: 'pointer',
-                    outline: selectedColor?.name === color.name ? '1px solid #c5a059' : 'none',
-                    outlineOffset: '2px',
-                    padding: 0
+            <div className="flex items-center gap-1.5">
+              {product.colors.slice(0, 3).map((col, idx) => (
+                <div
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedColor(col);
                   }}
-                  title={color.name}
+                  className={`w-3 h-3 rounded-full cursor-pointer transition-transform ${
+                    selectedColor?.name === col.name ? 'ring-1 ring-gold scale-125' : 'opacity-70 hover:opacity-100'
+                  }`}
+                  style={{ backgroundColor: col.hex }}
+                  title={col.name}
                 />
               ))}
-              <span style={{ fontSize: '0.68rem', color: '#888894', marginLeft: '6px' }}>
-                {selectedColor?.name || product.colors[0]?.name}
-              </span>
             </div>
           )}
-
-          {/* Pricing & Add to Cart footer */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            borderTop: '1px solid rgba(255,255,255,0.06)',
-            paddingTop: '12px'
-          }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                <span style={{
-                  fontFamily: 'var(--font-cinzel)',
-                  fontSize: '1.15rem',
-                  fontWeight: 600,
-                  color: '#faf8f5'
-                }}>
-                  {formatPrice(product.price)}
-                </span>
-                {product.originalPrice && (
-                  <span style={{
-                    fontSize: '0.8rem',
-                    color: '#71717a',
-                    textDecoration: 'line-through'
-                  }}>
-                    {formatPrice(product.originalPrice)}
-                  </span>
-                )}
-              </div>
-              <div style={{ fontSize: '0.62rem', color: '#a1a1aa' }}>
-                Inclusive of all taxes
-              </div>
-            </div>
-
-            <button
-              onClick={() => setSelectedProduct(product)}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#c5a059',
-                fontFamily: 'var(--font-cinzel)',
-                fontSize: '0.72rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                padding: '4px 0'
-              }}
-            >
-              Details →
-            </button>
-          </div>
         </div>
       </div>
     </div>

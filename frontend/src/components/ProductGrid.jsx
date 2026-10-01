@@ -1,31 +1,53 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import ProductCard from './ProductCard';
-import { Filter, SlidersHorizontal, Sparkles, LayoutGrid, Check } from 'lucide-react';
+import { Filter, SlidersHorizontal, Sparkles, Crown, Gem, Check, ChevronDown } from 'lucide-react';
 
 export default function ProductGrid({ products = [], initialCategory = 'All' }) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedSort, setSelectedSort] = useState('featured');
   const [priceFilter, setPriceFilter] = useState('all');
 
-  const categories = ['All', 'Banarasi Sarees', 'Lehengas', 'Sarees', 'Anarkalis'];
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory]);
+
+  const categories = [
+    { label: 'All Celebrations', value: 'All' },
+    { label: 'Men (Manyavar)', value: 'Men' },
+    { label: 'Women (Mohey)', value: 'Women' },
+    { label: 'Banarasi Sarees', value: 'Banarasi Sarees' },
+    { label: 'Bridal Lehengas', value: 'Lehengas' },
+    { label: 'Kurtis & Suits', value: 'Kurtis & Suits' },
+    { label: 'Sherwanis', value: 'Sherwanis' },
+    { label: 'Kurta Sets', value: 'Kurta Sets' }
+  ];
 
   const filteredProducts = useMemo(() => {
     let list = [...products];
 
     if (selectedCategory !== 'All') {
-      if (selectedCategory === 'Sarees') {
-        list = list.filter(p => p.category.toLowerCase().includes('saree'));
+      if (selectedCategory === 'Men') {
+        list = list.filter(p => p.gender === 'Men' || p.category === 'Sherwanis' || p.category === 'Kurta Sets' || p.category === 'Indo-Western');
+      } else if (selectedCategory === 'Women') {
+        list = list.filter(p => p.gender === 'Women' || p.category === 'Banarasi Sarees' || p.category === 'Lehengas' || p.category === 'Kurtis & Suits' || p.category === 'Sarees');
+      } else if (selectedCategory === 'Banarasi Sarees' || selectedCategory === 'Sarees') {
+        list = list.filter(p => p.category.toLowerCase().includes('saree') || p.name.toLowerCase().includes('saree') || p.name.toLowerCase().includes('banarasi'));
       } else {
-        list = list.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+        list = list.filter(p => 
+          p.category.toLowerCase() === selectedCategory.toLowerCase() ||
+          p.subCategory?.toLowerCase() === selectedCategory.toLowerCase()
+        );
       }
     }
 
     if (priceFilter === 'under25k') {
       list = list.filter(p => p.price < 25000);
-    } else if (priceFilter === '25k-40k') {
-      list = list.filter(p => p.price >= 25000 && p.price <= 40000);
-    } else if (priceFilter === 'above40k') {
-      list = list.filter(p => p.price > 40000);
+    } else if (priceFilter === '25k-45k') {
+      list = list.filter(p => p.price >= 25000 && p.price <= 45000);
+    } else if (priceFilter === 'above45k') {
+      list = list.filter(p => p.price > 45000);
     }
 
     if (selectedSort === 'price-low') {
@@ -40,190 +62,90 @@ export default function ProductGrid({ products = [], initialCategory = 'All' }) 
   }, [products, selectedCategory, selectedSort, priceFilter]);
 
   return (
-    <section 
-      id="products"
-      style={{
-        maxWidth: '1440px',
-        margin: '0 auto',
-        padding: '80px 32px'
-      }}
-    >
-      {/* Title & Editorial Subtext */}
-      <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          color: '#c5a059',
-          fontFamily: 'var(--font-cinzel)',
-          fontSize: '0.78rem',
-          letterSpacing: '0.3em',
-          textTransform: 'uppercase',
-          marginBottom: '12px'
-        }}>
-          <Sparkles size={14} />
-          <span>The Atelier Permanent Archive</span>
+    <section id="products" className="max-w-7xl mx-auto px-6 py-16">
+      {/* Title Header */}
+      <div className="text-center mb-10 space-y-3">
+        <div className="inline-flex items-center gap-2 text-gold font-cinzel text-xs tracking-[0.3em] uppercase font-semibold">
+          <Sparkles size={13} />
+          <span>Curated Festive & Bridal Catalog</span>
+          <Sparkles size={13} />
         </div>
 
-        <h2 style={{
-          fontFamily: 'var(--font-serif-display)',
-          fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
-          color: '#faf8f5',
-          fontWeight: 400,
-          letterSpacing: '0.03em'
-        }}>
-          Signature Silhouettes
+        <h2 className="font-display text-3xl sm:text-5xl font-normal text-ivory tracking-wide">
+          Manyavar & Mohey Masterpieces
         </h2>
 
-        <p style={{
-          fontFamily: 'var(--font-serif-editorial)',
-          fontSize: '1.15rem',
-          color: '#a0a0aa',
-          maxWidth: '580px',
-          margin: '12px auto 0 auto'
-        }}>
-          Handwoven silk tapestries, zari embroideries, and couture ensembles curated for weddings and grand soirées.
+        <p className="font-editorial italic text-lg text-[#c4c0b8] max-w-2xl mx-auto">
+          Handwoven Katan silk sarees, 32-kali royal bridal lehengas, and groom's shahi raw silk sherwanis tailored for unforgettable memories.
         </p>
       </div>
 
-      {/* Filter & Sort Toolbar */}
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '20px',
-        borderBottom: '1px solid rgba(197, 160, 89, 0.2)',
-        paddingBottom: '24px',
-        marginBottom: '40px'
-      }}>
-        {/* Category Tabs */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          {categories.map((cat) => (
+      {/* Category Tabs Strip */}
+      <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+        {categories.map((cat) => {
+          const isActive = selectedCategory === cat.value;
+          return (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              style={{
-                padding: '8px 18px',
-                background: selectedCategory === cat ? '#c5a059' : 'rgba(255, 255, 255, 0.04)',
-                color: selectedCategory === cat ? '#0c0c0e' : '#d1cdc7',
-                border: selectedCategory === cat ? '1px solid #c5a059' : '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '2px',
-                fontFamily: 'var(--font-cinzel)',
-                fontSize: '0.75rem',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                fontWeight: selectedCategory === cat ? 700 : 400
-              }}
+              key={cat.value}
+              onClick={() => setSelectedCategory(cat.value)}
+              className={`px-5 py-2.5 rounded-full font-cinzel text-xs tracking-wider uppercase whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                isActive
+                  ? 'bg-gradient-to-r from-gold via-gold-bright to-gold-dark text-black font-bold shadow-lg shadow-gold/25'
+                  : 'bg-[#14141a] text-[#d6cbb8] hover:bg-gold/15 hover:text-white border border-white/10'
+              }`}
             >
-              {cat}
+              {cat.label}
             </button>
-          ))}
+          );
+        })}
+      </div>
+
+      {/* Filter and Count Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-8 border-y border-white/10 text-xs text-[#a09885]">
+        <div className="font-cinzel tracking-wider text-gold-rich font-semibold uppercase">
+          Showing <span className="text-white font-bold">{filteredProducts.length}</span> Masterpieces
         </div>
 
-        {/* Sort & Price Filter Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-cinzel)', color: '#a0a0aa', letterSpacing: '0.1em' }}>
-              PRICE:
-            </span>
+        {/* Filters */}
+        <div className="flex items-center gap-4">
+          {/* Price Range Filter */}
+          <div className="flex items-center gap-1.5 bg-[#14141a] border border-white/10 px-3 py-1.5 rounded-sm">
+            <span className="text-white/60">Price:</span>
             <select
               value={priceFilter}
               onChange={(e) => setPriceFilter(e.target.value)}
-              style={{
-                background: '#18181d',
-                color: '#faf8f5',
-                border: '1px solid rgba(197, 160, 89, 0.3)',
-                padding: '7px 12px',
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-sans)',
-                borderRadius: '2px',
-                outline: 'none',
-                cursor: 'pointer'
-              }}
+              className="bg-transparent text-gold font-cinzel outline-none cursor-pointer"
             >
-              <option value="all">All Values</option>
-              <option value="under25k">Under ₹25,000</option>
-              <option value="25k-40k">₹25,000 - ₹40,000</option>
-              <option value="above40k">Above ₹40,000</option>
+              <option value="all" className="bg-[#121217]">All Prices</option>
+              <option value="under25k" className="bg-[#121217]">Under ₹25,000</option>
+              <option value="25k-45k" className="bg-[#121217]">₹25,000 - ₹45,000</option>
+              <option value="above45k" className="bg-[#121217]">Above ₹45,000</option>
             </select>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-cinzel)', color: '#a0a0aa', letterSpacing: '0.1em' }}>
-              SORT:
-            </span>
+          {/* Sort By Filter */}
+          <div className="flex items-center gap-1.5 bg-[#14141a] border border-white/10 px-3 py-1.5 rounded-sm">
+            <span className="text-white/60">Sort:</span>
             <select
               value={selectedSort}
               onChange={(e) => setSelectedSort(e.target.value)}
-              style={{
-                background: '#18181d',
-                color: '#faf8f5',
-                border: '1px solid rgba(197, 160, 89, 0.3)',
-                padding: '7px 12px',
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-sans)',
-                borderRadius: '2px',
-                outline: 'none',
-                cursor: 'pointer'
-              }}
+              className="bg-transparent text-gold font-cinzel outline-none cursor-pointer"
             >
-              <option value="featured">Editorial Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
+              <option value="featured" className="bg-[#121217]">Featured</option>
+              <option value="price-low" className="bg-[#121217]">Price: Low to High</option>
+              <option value="price-high" className="bg-[#121217]">Price: High to Low</option>
+              <option value="rating" className="bg-[#121217]">Top Rated</option>
             </select>
           </div>
         </div>
       </div>
 
-      {/* Product Count Display */}
-      <div style={{
-        marginBottom: '24px',
-        fontSize: '0.78rem',
-        letterSpacing: '0.12em',
-        color: '#8e8e99',
-        fontFamily: 'var(--font-cinzel)'
-      }}>
-        SHOWING {filteredProducts.length} HAUTE COUTURE CREATIONS
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
-
-      {/* Grid of Products */}
-      {filteredProducts.length === 0 ? (
-        <div style={{
-          textAlign: 'center',
-          padding: '80px 20px',
-          background: '#121217',
-          border: '1px dashed rgba(197, 160, 89, 0.3)',
-          borderRadius: '2px'
-        }}>
-          <Sparkles size={32} color="#c5a059" style={{ margin: '0 auto 16px auto' }} />
-          <h3 style={{ fontFamily: 'var(--font-serif-display)', fontSize: '1.6rem', color: '#faf8f5', marginBottom: '8px' }}>
-            No Silhouettes in this Filter
-          </h3>
-          <p style={{ color: '#9d9da6', fontSize: '0.9rem', marginBottom: '20px' }}>
-            Kindly reset your filters to view the full Atelier collection.
-          </p>
-          <button 
-            onClick={() => { setSelectedCategory('All'); setPriceFilter('all'); }}
-            className="btn-couture"
-          >
-            Reset Filters
-          </button>
-        </div>
-      ) : (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          gap: '32px'
-        }}>
-          {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
     </section>
   );
 }
