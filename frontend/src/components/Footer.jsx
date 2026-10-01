@@ -12,7 +12,8 @@ export default function Footer() {
     if (!email) return;
 
     try {
-      await fetch('http://localhost:5000/api/newsletter', {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://shop-ipvf.onrender.com';
+      await fetch(`${API_BASE}/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })

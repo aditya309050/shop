@@ -41,8 +41,9 @@ export default function CheckoutModal({ onClose, onSuccess, giftNote }) {
     setIsProcessing(true);
 
     try {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://shop-ipvf.onrender.com';
       // Send to backend
-      const response = await fetch('http://localhost:5000/api/orders', {
+      const response = await fetch(`${API_BASE}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

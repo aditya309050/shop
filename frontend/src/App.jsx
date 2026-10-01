@@ -59,12 +59,14 @@ function MainContent() {
 
   // Fetch from Node.js Express Backend
   useEffect(() => {
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://shop-ipvf.onrender.com';
+
     const fetchData = async () => {
       try {
         const [prodRes, colRes, storRes] = await Promise.all([
-          fetch('http://localhost:5000/api/products').catch(() => null),
-          fetch('http://localhost:5000/api/collections').catch(() => null),
-          fetch('http://localhost:5000/api/stories').catch(() => null)
+          fetch(`${API_BASE}/api/products`).catch(() => null),
+          fetch(`${API_BASE}/api/collections`).catch(() => null),
+          fetch(`${API_BASE}/api/stories`).catch(() => null)
         ]);
 
         if (prodRes && prodRes.ok) {
