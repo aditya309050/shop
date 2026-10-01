@@ -17,12 +17,12 @@ export default function MostLovedCarousel({ title = 'MOST LOVED', products = [],
   });
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-14">
+    <section className="w-full px-4 sm:px-[30px] py-14">
       {/* Centered Motif & Title */}
       <div className="text-center mb-6 space-y-2">
         <div className="flex justify-center mb-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#b33a10]">
-            <path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" fill="currentColor" opacity="0.85" />
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-[#b33a10]">
+            <path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" fill="currentColor" opacity="0.9" />
           </svg>
         </div>
 
@@ -53,7 +53,7 @@ export default function MostLovedCarousel({ title = 'MOST LOVED', products = [],
       </div>
 
       {/* 4-Card Carousel Grid */}
-      <div className="relative">
+      <div className="relative w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filtered.slice(0, 4).map((product) => {
             const isWishlisted = isInWishlist(product.id);
@@ -134,10 +134,10 @@ export default function MostLovedCarousel({ title = 'MOST LOVED', products = [],
         </div>
 
         {/* Circular Left and Right Arrows */}
-        <button className="hidden xl:flex absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer">
+        <button className="hidden 2xl:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer z-10">
           <ChevronLeft size={20} />
         </button>
-        <button className="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer">
+        <button className="hidden 2xl:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer z-10">
           <ChevronRight size={20} />
         </button>
       </div>

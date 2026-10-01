@@ -20,8 +20,8 @@ export default function ManyavarNavbar({ activeTab, onSelectTab, onOpenSearch, o
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#fbf8f2] border-b border-[#e8dfd1] shadow-xs">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-40 bg-[#fbf8f2] border-b border-[#e8dfd1] shadow-xs w-full">
+      <div className="w-full px-4 sm:px-[30px] h-20 flex items-center justify-between gap-6">
         
         {/* Left: Navigation Categories */}
         <nav className="hidden lg:flex items-center gap-8 font-cinzel text-xs tracking-[0.16em] font-bold text-[#2b241e]">
@@ -60,7 +60,7 @@ export default function ManyavarNavbar({ activeTab, onSelectTab, onOpenSearch, o
           <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#d4752b] drop-shadow-xs">
             Manyavar
           </span>
-          <span className="w-6 h-6 rounded-sm bg-[#e25822] text-[#fbf8f2] flex items-center justify-center font-bold text-xs shadow-xs">
+          <span className="w-6 h-6 rounded-xs bg-[#e25822] text-[#fbf8f2] flex items-center justify-center font-bold text-xs shadow-xs">
             M
           </span>
           <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#d4752b] drop-shadow-xs">
@@ -80,11 +80,11 @@ export default function ManyavarNavbar({ activeTab, onSelectTab, onOpenSearch, o
               placeholder={activeTab === 'WOMEN' ? 'Search for Bridal Lehenga, Saree...' : 'Search for Sherwani, Kurta...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-3 py-1.5 text-xs text-[#2b241e] placeholder-[#9c9182] outline-none w-52 md:w-64 bg-transparent font-sans"
+              className="px-3.5 py-1.5 text-xs text-[#2b241e] placeholder-[#9c9182] outline-none w-52 md:w-64 bg-transparent font-sans"
             />
             <button
               type="submit"
-              className="bg-[#e25822] hover:bg-[#c84412] text-white px-3 py-2 flex items-center justify-center transition-colors cursor-pointer"
+              className="bg-[#e25822] hover:bg-[#c84412] text-white px-3.5 py-2 flex items-center justify-center transition-colors cursor-pointer"
             >
               <Search size={14} />
             </button>

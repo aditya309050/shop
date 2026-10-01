@@ -6,7 +6,7 @@ export default function ManyavarTopBar({ onOpenAppointments, onOpenWishlist }) {
   const { wishlistCount } = useShop();
 
   return (
-    <div className="bg-[#3e1e16] text-[#eaddc5] text-[0.72rem] tracking-wider py-1.5 px-6 border-b border-[#52291e] flex flex-wrap justify-between items-center z-50 relative">
+    <div className="w-full bg-[#3e1e16] text-[#eaddc5] text-[0.72rem] tracking-wider py-2 px-4 sm:px-[30px] border-b border-[#52291e] flex flex-wrap justify-between items-center z-50 relative">
       {/* Left: Country & Currency */}
       <div className="flex items-center gap-2">
         <span className="text-sm">🇮🇳</span>

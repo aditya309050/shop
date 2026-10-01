@@ -24,8 +24,8 @@ export const defaultProducts = [
     ],
     sizes: ["38", "40", "42", "44"],
     images: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "Engineered for the modern groom and groomsmen. Features an intricately embroidered jacket layered over a crisp asymmetrical kurta and tailored churidar.",
     details: [
@@ -58,8 +58,8 @@ export const defaultProducts = [
     ],
     sizes: ["38 (S)", "40 (M)", "42 (L)", "44 (XL)"],
     images: [
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "The definitive royal Indian groom silhouette. Pure silk sherwani with tonal ivory and gold hand-embroidery, complemented by a velvet stole and coordinated churidar.",
     details: [
@@ -91,8 +91,8 @@ export const defaultProducts = [
     ],
     sizes: ["38", "40", "42", "44"],
     images: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "Woven with intricate heritage floral bel butis across the bodice, finished with imperial velvet collar trim.",
     details: [
@@ -125,8 +125,8 @@ export const defaultProducts = [
     ],
     sizes: ["38", "40", "42", "44"],
     images: [
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "An opulent cocktail and reception silhouette. Structured plush velvet with subtle sequin clusters that catch the evening lights.",
     details: [
@@ -159,8 +159,8 @@ export const defaultProducts = [
     ],
     sizes: ["38", "40", "42", "44"],
     images: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1565708097881-bbf4ecf47cc1?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "A perennial Manyavar favorite for Haldi, Mehendi, and Engagement ceremonies. Lightweight pure silk kurta with an intricately embroidered sleeveless Bundi jacket.",
     details: [
@@ -197,7 +197,6 @@ export const defaultProducts = [
     sizes: ["Standard Handloom (6.5m)", "Pre-Draped Tailored"],
     images: [
       "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "Woven across 35 days in Varanasi on authentic handlooms. Pure Katan silk interlocked with fine gold zari floral jaal using the historic Kadwa technique.",
@@ -263,8 +262,8 @@ export const defaultProducts = [
     ],
     sizes: ["Standard Handloom (6.3m)"],
     images: [
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85"
     ],
     description: "Shimmering real gold electroplated zari threads woven into gossamer tissue silk for red-carpet poise.",
     details: [
@@ -316,7 +315,7 @@ export const defaultProducts = [
     name: "Little Maharaja Brocade Sherwani & Dhoti Set",
     brand: "Manyavar Kids",
     gender: "Kids",
-    vibe: "KIDS SHERWANI",
+    vibe: "BOYS SHERWANI",
     occasion: "WEDDING",
     tagline: "Pure silk brocade sherwani with pre-stitched readymade dhoti for boys",
     price: 6999,
@@ -333,8 +332,8 @@ export const defaultProducts = [
     ],
     sizes: ["2-3 Yrs", "4-5 Yrs", "6-7 Yrs", "8-9 Yrs", "10-12 Yrs"],
     images: [
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=85"
     ],
     description: "Designed for young princes. Comfortable lightweight brocade silk sherwani with soft inner cotton lining and easy-wear pre-stitched dhoti.",
     details: [
@@ -350,7 +349,7 @@ export const defaultProducts = [
     name: "Rani Pink Embroidered Little Princess Lehenga Choli",
     brand: "Mohey Kids",
     gender: "Kids",
-    vibe: "KIDS LEHENGA",
+    vibe: "GIRLS LEHENGA",
     occasion: "WEDDING",
     tagline: "Lightweight festive flared lehenga with gota patti and soft net dupatta",
     price: 7499,
@@ -367,8 +366,8 @@ export const defaultProducts = [
     ],
     sizes: ["2-3 Yrs", "4-5 Yrs", "6-7 Yrs", "8-9 Yrs", "10-12 Yrs"],
     images: [
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1583391733975-081dd793ac02?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=800&q=85"
     ],
     description: "Twirl-ready festive lehenga for girls. Crafted with soft lightweight georgette, gentle cotton lining, and glittering gota borders.",
     details: [
@@ -383,7 +382,7 @@ export const defaultProducts = [
     name: "Boys Sunlit Haldi Yellow Silk Kurta & Jacket Set",
     brand: "Manyavar Kids",
     gender: "Kids",
-    vibe: "KIDS KURTA SET",
+    vibe: "BOYS KURTA SET",
     occasion: "ENGAGEMENT",
     tagline: "Vibrant yellow silk kurta with printed Nehru jacket and comfortable pajama",
     price: 4999,
@@ -400,7 +399,8 @@ export const defaultProducts = [
     ],
     sizes: ["2-3 Yrs", "4-5 Yrs", "6-7 Yrs", "8-9 Yrs", "10-12 Yrs"],
     images: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1471286174890-9c112ffca56a?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85"
     ],
     description: "The ideal outfit for Haldi, Mehendi, and festive celebrations. Soft breathable silk blend with elasticated pajama waist for complete comfort.",
     details: [
@@ -421,7 +421,7 @@ export const defaultCollections = [
     subtitle: "Pure Silk Sherwanis, Safas & Regal Stoles",
     tag: "Groom's Special",
     description: "Handcrafted groom sherwanis, asymmetric velvet Indo-Westerns, and royal accessories engineered for the grand Indian wedding.",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+    image: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1600&q=85",
     itemCount: "42 Groom Sets",
     badge: "Groom's Sovereign"
   },
@@ -457,7 +457,7 @@ export const defaultCollections = [
     subtitle: "Sherwanis, Kurta Sets & Little Princess Lehengas",
     tag: "Kids Celebration",
     description: "Twirl-worthy lehengas for little girls and regal brocade sherwanis for boys crafted with 100% breathable soft cotton lining.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1600&q=85",
+    image: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=1600&q=85",
     itemCount: "25 Kids Ensembles",
     badge: "Kids Royal Edit"
   }

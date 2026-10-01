@@ -5,7 +5,7 @@ export default function ManyavarHero({ activeTab = 'MEN', onSelectFilter }) {
   // Dynamic content based on active gender tab
   const heroData = {
     MEN: {
-      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2000&q=85',
+      image: 'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=2000&q=85',
       title: 'This Wedding Season',
       subtext: 'Curated royal sherwanis, festive kurtas and bespoke bandhgalas for the modern groom and groomsmen.',
       pills: [
@@ -25,7 +25,7 @@ export default function ManyavarHero({ activeTab = 'MEN', onSelectFilter }) {
       ]
     },
     KIDS: {
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=2000&q=85',
+      image: 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=2000&q=85',
       title: 'Little Celebrations',
       subtext: 'Adorable miniature brocade sherwanis for boys and twirl-ready lehenga cholis for young princesses.',
       pills: [
@@ -49,7 +49,7 @@ export default function ManyavarHero({ activeTab = 'MEN', onSelectFilter }) {
   const current = heroData[activeTab] || heroData.MEN;
 
   return (
-    <section className="relative w-full h-[72vh] min-h-[520px] max-h-[700px] overflow-hidden bg-[#e8dfd1]">
+    <section className="relative w-full h-[72vh] min-h-[520px] max-h-[720px] overflow-hidden bg-[#e8dfd1]">
       {/* Background Campaign Visual */}
       <img
         src={current.image}
@@ -58,19 +58,19 @@ export default function ManyavarHero({ activeTab = 'MEN', onSelectFilter }) {
       />
 
       {/* Gentle Vignette Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto h-full px-6 flex flex-col justify-end pb-12 sm:pb-16">
+      <div className="relative z-10 w-full h-full px-4 sm:px-[30px] flex flex-col justify-end pb-12 sm:pb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           
           {/* Left: Typography */}
-          <div className="max-w-xl space-y-3">
+          <div className="max-w-2xl space-y-3">
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal text-white drop-shadow-md tracking-tight">
               {current.title}
             </h1>
-            <p className="text-white/90 text-sm sm:text-base font-sans drop-shadow-sm line-clamp-2 max-w-lg">
+            <p className="text-white/90 text-sm sm:text-base font-sans drop-shadow-sm line-clamp-2 max-w-xl">
               {current.subtext}
             </p>
           </div>
@@ -83,8 +83,8 @@ export default function ManyavarHero({ activeTab = 'MEN', onSelectFilter }) {
                 onClick={() => onSelectFilter && onSelectFilter(pill.filter)}
                 className={`text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer text-left ${
                   pill.isPrimary
-                    ? 'bg-[#e25822] hover:bg-[#c84412] text-white px-6 py-3.5 rounded-sm shadow-md font-bold'
-                    : 'text-white/90 hover:text-white px-4 py-2 hover:bg-black/30 rounded-sm'
+                    ? 'bg-[#e25822] hover:bg-[#c84412] text-white px-6 py-3.5 rounded-xs shadow-md font-bold'
+                    : 'text-white/90 hover:text-white px-4 py-2 hover:bg-black/30 rounded-xs'
                 }`}
               >
                 <span>{pill.label}</span>
