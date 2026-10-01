@@ -11,9 +11,10 @@ export default function CollectionsPage({ collections = [], products = [], onBac
   const categories = [
     { name: 'All', icon: Sparkles },
     { name: 'Banarasi Sarees', icon: Crown },
+    { name: 'Kurtis', icon: Flame },
     { name: 'Lehengas', icon: Gem },
     { name: 'Sarees', icon: Layers },
-    { name: 'Anarkalis', icon: Flame }
+    { name: 'Anarkalis', icon: Sparkles }
   ];
 
   // Filter collections by selected tab
@@ -204,6 +205,7 @@ export default function CollectionsPage({ collections = [], products = [], onBac
             p.collection.toLowerCase().includes(collection.title.toLowerCase()) || 
             p.collection.toLowerCase() === collection.id.toLowerCase() ||
             (collection.id === 'banarasi-kashi-heritage' && (p.category === 'Banarasi Sarees' || p.name.includes('Banarasi'))) ||
+            (collection.id === 'imperial-kurtis-ensembles' && (p.category === 'Kurtis' || p.name.includes('Kurti') || p.name.includes('Kurta'))) ||
             (collection.id === 'imperial-bridal-lehengas' && (p.category === 'Lehengas' || p.name.includes('Lehenga'))) ||
             (collection.id === 'spring-atelier-2026' && p.collection.includes('Spring')) ||
             (collection.id === 'regalia-handlooms' && (p.category.includes('Saree') || p.collection.includes('Regalia')))
@@ -212,7 +214,8 @@ export default function CollectionsPage({ collections = [], products = [], onBac
           if (selectedCategoryType !== 'All') {
             colProducts = colProducts.filter(p => 
               p.category.toLowerCase() === selectedCategoryType.toLowerCase() ||
-              (selectedCategoryType === 'Sarees' && (p.category === 'Sarees' || p.category === 'Banarasi Sarees'))
+              (selectedCategoryType === 'Sarees' && (p.category === 'Sarees' || p.category === 'Banarasi Sarees')) ||
+              (selectedCategoryType === 'Kurtis' && (p.category === 'Kurtis' || p.category === 'Anarkalis'))
             );
           }
 

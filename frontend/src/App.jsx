@@ -26,13 +26,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 function MainContent() {
   const { toastMessage, setSelectedProduct, isBespokeOpen, setIsBespokeOpen, bespokeProduct } = useShop();
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'collections'
+  
+  // Read initial path for /collections direct URL support
+  const initialPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/collections') 
+    ? 'collections' 
+    : 'home';
+    
+  const [currentPage, setCurrentPage] = useState(initialPage); // 'home' | 'collections'
   const [products, setProducts] = useState(defaultProducts);
   const [collections, setCollections] = useState(defaultCollections);
   const [stories, setStories] = useState(defaultStories);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('All');
   const [showGateEntrance, setShowGateEntrance] = useState(true);
+
+  // Sync browser back/forward buttons (Popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      if (window.location.pathname.startsWith('/collections')) {
+        setCurrentPage('collections');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Initialize Lenis Smooth Scrolling
   useEffect(() => {
@@ -59,17 +78,27 @@ function MainContent() {
     };
   }, []);
 
-  // Fetch from Node.js Express Backend
+  // Fetch from Node.js Express Backend with intelligent live cloud fallback
   useEffect(() => {
-    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://shop-ipvf.onrender.com';
+    const primaryApi = import.meta.env.VITE_API_BASE_URL || (
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000'
+        : 'https://shop-ipvf.onrender.com'
+    );
+    const backupApi = 'https://shop-ipvf.onrender.com';
 
     const fetchData = async () => {
       try {
-        const [prodRes, colRes, storRes] = await Promise.all([
-          fetch(`${API_BASE}/api/products`).catch(() => null),
-          fetch(`${API_BASE}/api/collections`).catch(() => null),
-          fetch(`${API_BASE}/api/stories`).catch(() => null)
-        ]);
+        let prodRes = await fetch(`${primaryApi}/api/products`).catch(() => null);
+        let colRes = await fetch(`${primaryApi}/api/collections`).catch(() => null);
+        let storRes = await fetch(`${primaryApi}/api/stories`).catch(() => null);
+
+        // Fallback to live Render backend if local API is not running
+        if (!prodRes || !prodRes.ok) {
+          prodRes = await fetch(`${backupApi}/api/products`).catch(() => null);
+          colRes = await fetch(`${backupApi}/api/collections`).catch(() => null);
+          storRes = await fetch(`${backupApi}/api/stories`).catch(() => null);
+        }
 
         if (prodRes && prodRes.ok) {
           const prodData = await prodRes.json();
@@ -101,17 +130,21 @@ function MainContent() {
 
   const handleNavigatePage = (page) => {
     setCurrentPage(page);
+    const targetUrl = page === 'collections' ? '/collections' : '/';
+    if (window.location.pathname !== targetUrl) {
+      window.history.pushState({ page }, '', targetUrl);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigate = (sectionId, category) => {
     if (currentPage !== 'home') {
-      setCurrentPage('home');
+      handleNavigatePage('home');
       setTimeout(() => {
         if (category) setActiveCategoryFilter(category);
         const el = document.getElementById(sectionId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      }, 80);
       return;
     }
 
@@ -125,9 +158,7 @@ function MainContent() {
   };
 
   const handleSelectCollection = (col) => {
-    // Open dedicated collections page or view matched product
-    setCurrentPage('collections');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    handleNavigatePage('collections');
   };
 
   return (
