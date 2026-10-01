@@ -3,49 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-obsidian: #09090b;
-    --color-obsidian-light: #141418;
-    --color-obsidian-card: #18181d;
-    --color-ivory: #faf8f5;
-    --color-ivory-dim: #d1cdc7;
-    --color-gold: #c5a059;
-    --color-gold-bright: #e5be75;
-    --color-gold-deep: #9a7632;
-    --color-rose-gold: #d89f92;
-    --color-velvet-crimson: #681120;
-    --color-emerald-deep: #0b2e24;
-    --color-border-subtle: rgba(255, 255, 255, 0.08);
-    --color-border-gold: rgba(197, 160, 89, 0.25);
-    
-    --font-serif-display: 'Italiana', 'Cinzel', serif;
-    --font-serif-editorial: 'Cormorant Garamond', Georgia, serif;
-    --font-cinzel: 'Cinzel', serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
   body {
-    @apply bg-[#09090b] text-[#faf8f5] font-sans antialiased overflow-x-hidden min-h-screen;
+    background-color: #fbf8f2;
+    color: #221e1a;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 }
 
-/* Custom Luxury Scrollbar */
+/* Manyavar Arch Shape for "What's Your Vibe" */
+.manyavar-arch {
+  border-top-left-radius: 120px;
+  border-top-right-radius: 120px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #f5efe4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a32;
+  background: #d4c5b3;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c5a059;
+  background: #e25822;
 }
 
-/* Hide scrollbar for clean story slider */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
