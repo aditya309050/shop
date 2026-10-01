@@ -40,11 +40,11 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
 
   const navLinks = [
     { label: 'Home', id: 'home', page: 'home' },
-    { label: 'Sarees', id: 'products', category: 'Sarees' },
-    { label: 'Lehengas', id: 'products', category: 'Lehengas' },
+    { label: 'Banarasi Sarees', id: 'products', category: 'Banarasi Sarees' },
+    { label: 'Royal Lehengas', id: 'products', category: 'Lehengas' },
     { label: 'Collections', page: 'collections' },
     { label: 'Lookbook', id: 'trends' },
-    { label: 'Bespoke Fitting', action: () => openBespoke() },
+    { label: 'Bespoke Salon', action: () => openBespoke() },
   ];
 
   const handleLinkClick = (link) => {

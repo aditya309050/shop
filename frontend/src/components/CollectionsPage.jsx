@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import ProductCard from './ProductCard';
-import { ArrowLeft, Sparkles, Layers, Compass, ShieldCheck, Star } from 'lucide-react';
+import { ArrowLeft, Sparkles, Layers, ShieldCheck, Crown, Flame, Gem } from 'lucide-react';
 
 export default function CollectionsPage({ collections = [], products = [], onBackHome }) {
   const [selectedCollectionId, setSelectedCollectionId] = useState('all');
-  const { setSelectedProduct } = useShop();
+  const [selectedCategoryType, setSelectedCategoryType] = useState('All');
+  const { setSelectedProduct, setIsBespokeOpen } = useShop();
 
-  const filteredCollections = selectedCollectionId === 'all'
+  const categories = [
+    { name: 'All', icon: Sparkles },
+    { name: 'Banarasi Sarees', icon: Crown },
+    { name: 'Lehengas', icon: Gem },
+    { name: 'Sarees', icon: Layers },
+    { name: 'Anarkalis', icon: Flame }
+  ];
+
+  // Filter collections by selected tab
+  const activeCollections = selectedCollectionId === 'all'
     ? collections
     : collections.filter(c => c.id === selectedCollectionId);
 
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#09090b',
+      background: '#070709',
       color: '#faf8f5',
       paddingTop: '40px',
       paddingBottom: '120px'
@@ -52,7 +62,7 @@ export default function CollectionsPage({ collections = [], products = [], onBac
         </button>
 
         {/* Editorial Heading */}
-        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 48px auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto 48px auto' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -64,31 +74,71 @@ export default function CollectionsPage({ collections = [], products = [], onBac
             textTransform: 'uppercase',
             marginBottom: '14px'
           }}>
-            <Sparkles size={14} />
-            <span>The Permanent Haute Couture Archives</span>
+            <Crown size={15} color="#c5a059" />
+            <span>The Imperial Haute Couture Archives</span>
+            <Crown size={15} color="#c5a059" />
           </div>
 
           <h1 style={{
             fontFamily: 'var(--font-serif-display)',
-            fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+            fontSize: 'clamp(2.5rem, 5vw, 4.4rem)',
             fontWeight: 400,
             lineHeight: 1.08,
             color: '#faf8f5',
             letterSpacing: '0.02em',
             marginBottom: '16px'
           }}>
-            All Atelier Collections
+            Sacred Banarasi & Royal Lehenga Editions
           </h1>
 
           <p style={{
             fontFamily: 'var(--font-serif-editorial)',
-            fontSize: '1.2rem',
+            fontSize: '1.25rem',
             color: '#c4c0b8',
             lineHeight: 1.6
           }}>
-            Explore our curated seasonal campaigns, sacred handloom archives, and bespoke bridal masterpieces.
-            Each collection represents hundreds of hours of devoted Indian karigar handcraft.
+            Immerse in the timeless opulence of authentic Varanasi Kadwa silk sarees, 32-kali bridal lehengas laden in pure Kashmiri Tilla wirework, and pure heirloom handlooms.
           </p>
+        </div>
+
+        {/* Category Pill Filters */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '10px',
+          marginBottom: '28px'
+        }}>
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const isActive = selectedCategoryType === cat.name;
+            return (
+              <button
+                key={cat.name}
+                onClick={() => setSelectedCategoryType(cat.name)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 20px',
+                  borderRadius: '30px',
+                  background: isActive ? '#c5a059' : 'rgba(22, 22, 28, 0.7)',
+                  color: isActive ? '#09090b' : '#d6cbb8',
+                  border: isActive ? '1px solid #c5a059' : '1px solid rgba(197, 160, 89, 0.25)',
+                  fontSize: '0.76rem',
+                  fontFamily: 'var(--font-cinzel)',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  cursor: 'pointer',
+                  fontWeight: isActive ? 700 : 500,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <Icon size={13} color={isActive ? '#09090b' : '#c5a059'} />
+                <span>{cat.name}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Collection Filter Tabs */}
@@ -118,7 +168,7 @@ export default function CollectionsPage({ collections = [], products = [], onBac
               transition: 'all 0.3s'
             }}
           >
-            All Collections ({collections.length})
+            All Archives ({collections.length})
           </button>
 
           {collections.map(col => (
@@ -148,30 +198,43 @@ export default function CollectionsPage({ collections = [], products = [], onBac
 
       {/* Main Collections List */}
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 32px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
-        {filteredCollections.map((collection, idx) => {
-          // Find products in this collection
-          const collectionProducts = products.filter(p => 
+        {activeCollections.map((collection) => {
+          // Find products in this collection with optional category filter
+          let colProducts = products.filter(p => 
             p.collection.toLowerCase().includes(collection.title.toLowerCase()) || 
             p.collection.toLowerCase() === collection.id.toLowerCase() ||
+            (collection.id === 'banarasi-kashi-heritage' && (p.category === 'Banarasi Sarees' || p.name.includes('Banarasi'))) ||
+            (collection.id === 'imperial-bridal-lehengas' && (p.category === 'Lehengas' || p.name.includes('Lehenga'))) ||
             (collection.id === 'spring-atelier-2026' && p.collection.includes('Spring')) ||
-            (collection.id === 'nocturne-heritage' && p.collection.includes('Nocturne')) ||
-            (collection.id === 'regalia-2026' && p.collection.includes('Regalia'))
+            (collection.id === 'regalia-handlooms' && (p.category.includes('Saree') || p.collection.includes('Regalia')))
           );
+
+          if (selectedCategoryType !== 'All') {
+            colProducts = colProducts.filter(p => 
+              p.category.toLowerCase() === selectedCategoryType.toLowerCase() ||
+              (selectedCategoryType === 'Sarees' && (p.category === 'Sarees' || p.category === 'Banarasi Sarees'))
+            );
+          }
+
+          if (colProducts.length === 0 && selectedCategoryType !== 'All') {
+            return null;
+          }
 
           return (
             <div 
               key={collection.id}
               style={{
-                background: '#121217',
-                border: '1px solid rgba(197, 160, 89, 0.25)',
-                borderRadius: '2px',
-                overflow: 'hidden'
+                background: '#0d0d12',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                borderRadius: '4px',
+                overflow: 'hidden',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.7)'
               }}
             >
               {/* Collection Feature Banner */}
               <div style={{
                 position: 'relative',
-                minHeight: '420px',
+                minHeight: '440px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-end',
@@ -187,120 +250,135 @@ export default function CollectionsPage({ collections = [], products = [], onBac
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'brightness(0.65) contrast(1.1)'
+                    zIndex: 0,
+                    filter: 'brightness(0.55) contrast(1.1)'
                   }}
                 />
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(180deg, rgba(9,9,11,0.2) 0%, rgba(9,9,11,0.6) 40%, rgba(18,18,23,0.98) 100%)'
+                  background: 'linear-gradient(0deg, #0d0d12 0%, rgba(13,13,18,0.7) 45%, rgba(13,13,18,0.2) 100%)',
+                  zIndex: 1
                 }} />
 
-                <div style={{ position: 'relative', zIndex: 10, maxWidth: '780px' }}>
-                  <div style={{
-                    display: 'inline-block',
-                    background: 'rgba(197, 160, 89, 0.25)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(197, 160, 89, 0.4)',
-                    color: '#f8e8cf',
-                    padding: '4px 14px',
-                    fontSize: '0.72rem',
-                    fontFamily: 'var(--font-cinzel)',
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                    marginBottom: '14px'
-                  }}>
-                    {collection.badge || collection.tag || 'Haute Edition'}
-                  </div>
-
-                  <div style={{
-                    fontSize: '0.85rem',
-                    fontFamily: 'var(--font-cinzel)',
-                    letterSpacing: '0.22em',
-                    color: '#c5a059',
-                    textTransform: 'uppercase',
-                    marginBottom: '6px'
-                  }}>
-                    {collection.subtitle}
+                <div style={{ position: 'relative', zIndex: 2, maxWidth: '780px' }}>
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px' }}>
+                    <span style={{
+                      background: '#c5a059',
+                      color: '#09090b',
+                      fontSize: '0.72rem',
+                      fontFamily: 'var(--font-cinzel)',
+                      fontWeight: 700,
+                      letterSpacing: '0.15em',
+                      padding: '4px 12px',
+                      textTransform: 'uppercase',
+                      borderRadius: '2px'
+                    }}>
+                      {collection.badge}
+                    </span>
+                    <span style={{
+                      fontSize: '0.8rem',
+                      color: '#eaddc5',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      fontFamily: 'var(--font-cinzel)'
+                    }}>
+                      {collection.itemCount}
+                    </span>
                   </div>
 
                   <h2 style={{
                     fontFamily: 'var(--font-serif-display)',
-                    fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
-                    color: '#faf8f5',
-                    marginBottom: '14px',
-                    fontWeight: 400
+                    fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.12,
+                    marginBottom: '10px',
+                    color: '#faf8f5'
                   }}>
                     {collection.title}
                   </h2>
 
                   <p style={{
                     fontFamily: 'var(--font-serif-editorial)',
-                    fontSize: '1.15rem',
-                    color: '#d6d2ca',
+                    fontStyle: 'italic',
+                    fontSize: '1.25rem',
+                    color: '#c5a059',
+                    marginBottom: '14px'
+                  }}>
+                    {collection.subtitle}
+                  </p>
+
+                  <p style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.98rem',
+                    color: '#c4c0b8',
                     lineHeight: 1.6,
-                    marginBottom: '16px'
+                    maxWidth: '640px',
+                    marginBottom: '24px'
                   }}>
                     {collection.description}
                   </p>
 
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '24px',
-                    fontSize: '0.78rem',
-                    fontFamily: 'var(--font-cinzel)',
-                    color: '#a0a0aa'
-                  }}>
-                    <span>{collectionProducts.length} Silhouettes in Atelier Archive</span>
-                    <span>•</span>
-                    <span style={{ color: '#22c55e', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <ShieldCheck size={14} /> Ready for Private Viewing & Bespoke Draping
-                    </span>
-                  </div>
+                  <button
+                    onClick={() => setIsBespokeOpen(true)}
+                    style={{
+                      padding: '12px 28px',
+                      background: 'linear-gradient(135deg, #c5a059 0%, #a47e3b 100%)',
+                      color: '#0a0a0c',
+                      border: 'none',
+                      fontFamily: 'var(--font-cinzel)',
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 8px 24px rgba(197, 160, 89, 0.35)',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    <Sparkles size={14} />
+                    <span>Book Private Salon Consultation</span>
+                  </button>
                 </div>
               </div>
 
-              {/* Products in this Collection */}
-              <div style={{ padding: '40px' }}>
+              {/* Products in Collection Grid */}
+              <div style={{ padding: '40px 32px 50px 32px' }}>
                 <div style={{
-                  fontSize: '0.82rem',
-                  fontFamily: 'var(--font-cinzel)',
-                  color: '#c5a059',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  marginBottom: '28px',
                   display: 'flex',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
-                  gap: '8px'
+                  marginBottom: '28px',
+                  borderBottom: '1px solid rgba(197, 160, 89, 0.15)',
+                  paddingBottom: '16px'
                 }}>
-                  <Sparkles size={14} />
-                  <span>Silhouettes from {collection.title}</span>
+                  <div style={{
+                    fontFamily: 'var(--font-cinzel)',
+                    fontSize: '0.85rem',
+                    letterSpacing: '0.2em',
+                    color: '#c5a059',
+                    textTransform: 'uppercase'
+                  }}>
+                    Curated Silhouettes ({colProducts.length})
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#a09885', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <ShieldCheck size={14} color="#c5a059" />
+                    <span>Silk Mark & Karigar Certified</span>
+                  </div>
                 </div>
 
-                {collectionProducts.length > 0 ? (
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                    gap: '30px'
-                  }}>
-                    {collectionProducts.map(product => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
-                ) : (
-                  <div style={{
-                    padding: '40px',
-                    textAlign: 'center',
-                    background: '#09090b',
-                    border: '1px dashed rgba(197, 160, 89, 0.25)',
-                    borderRadius: '2px'
-                  }}>
-                    <p style={{ color: '#9d9da6' }}>
-                      All bespoke silhouettes in this capsule are currently reserved for salon viewings.
-                    </p>
-                  </div>
-                )}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                  gap: '28px'
+                }}>
+                  {colProducts.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
               </div>
             </div>
           );

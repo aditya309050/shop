@@ -7,13 +7,17 @@ export default function ProductGrid({ products = [], initialCategory = 'All' }) 
   const [selectedSort, setSelectedSort] = useState('featured');
   const [priceFilter, setPriceFilter] = useState('all');
 
-  const categories = ['All', 'Sarees', 'Lehengas', 'Indo-Western', 'Anarkalis', 'Jewellery'];
+  const categories = ['All', 'Banarasi Sarees', 'Lehengas', 'Sarees', 'Anarkalis'];
 
   const filteredProducts = useMemo(() => {
     let list = [...products];
 
     if (selectedCategory !== 'All') {
-      list = list.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+      if (selectedCategory === 'Sarees') {
+        list = list.filter(p => p.category.toLowerCase().includes('saree'));
+      } else {
+        list = list.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+      }
     }
 
     if (priceFilter === 'under25k') {

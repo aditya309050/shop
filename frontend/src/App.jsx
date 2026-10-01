@@ -20,6 +20,7 @@ import SearchModal from './components/SearchModal';
 import BespokeModal from './components/BespokeModal';
 import Footer from './components/Footer';
 import LuxuryAudio from './components/LuxuryAudio';
+import RoyalGateEntrance from './components/RoyalGateEntrance';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,7 @@ function MainContent() {
   const [stories, setStories] = useState(defaultStories);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('All');
+  const [showGateEntrance, setShowGateEntrance] = useState(true);
 
   // Initialize Lenis Smooth Scrolling
   useEffect(() => {
@@ -184,6 +186,11 @@ function MainContent() {
 
       {/* Footer */}
       <Footer />
+
+      {/* 3D Glass Royal Palace Gate Opening Animation */}
+      {showGateEntrance && (
+        <RoyalGateEntrance onFinish={() => setShowGateEntrance(false)} />
+      )}
 
       {/* Interactive Floating Modals & Drawers */}
       <ProductDetailModal />
