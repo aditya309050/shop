@@ -44,8 +44,8 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
 
   const navLinks = [
     { label: 'HOME', page: 'home' },
-    { label: 'MEN (MANYAVAR)', category: 'Men', id: 'products' },
-    { label: 'WOMEN (MOHEY)', category: 'Women', id: 'products' },
+    { label: 'MEN (GROOM)', category: 'Men', id: 'products' },
+    { label: 'WOMEN (BRIDAL)', category: 'Women', id: 'products' },
     { label: 'BANARASI SAREES', category: 'Banarasi Sarees', id: 'products' },
     { label: 'BRIDAL LEHENGAS', category: 'Lehengas', id: 'products' },
     { label: 'KURTIS & SUITS', category: 'Kurtis & Suits', id: 'products' },
@@ -194,7 +194,7 @@ export default function Navbar({ onNavigateSection, onNavigatePage, currentPage,
                 transition: 'font-size 0.3s ease',
                 textShadow: '0 2px 10px rgba(0,0,0,0.5)'
               }}>
-                MANYAVAR <span style={{ color: '#c5a059', fontWeight: 300 }}>&</span> MOHEY
+                CHUNNILAL <span style={{ color: '#c5a059', fontWeight: 300 }}>&</span> MEGAMART
               </span>
             </div>
             <div style={{

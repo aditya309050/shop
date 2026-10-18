@@ -16,7 +16,7 @@ export default function ManyavarTopBar({ onOpenAppointments, onOpenWishlist }) {
       {/* Center: Brand Trust Message */}
       <div className="hidden md:flex items-center gap-1.5 text-[#d8cab7]">
         <Sparkles size={11} className="text-[#e25822]" />
-        <span>Trusted by millions since 1999 • 100% Authentic Handloom Guarantee</span>
+        <span>Welcome to Chunnilal Megamart • Trusted since 1999 • 100% Authentic Handloom Guarantee</span>
       </div>
 
       {/* Right: Quick Utility Links */}

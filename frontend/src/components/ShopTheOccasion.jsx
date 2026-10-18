@@ -1,36 +1,87 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function ShopTheOccasion({ onSelectOccasion }) {
-  const occasions = [
-    {
-      id: 'WEDDING',
-      title: 'WEDDING',
-      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85',
-      filter: 'Wedding'
-    },
-    {
-      id: 'RECEPTION',
-      title: 'RECEPTION',
-      image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=85',
-      filter: 'Reception'
-    },
-    {
-      id: 'ENGAGEMENT',
-      title: 'ENGAGEMENT',
-      image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85',
-      filter: 'Engagement'
-    },
-    {
-      id: 'SANGEET',
-      title: 'SANGEET',
-      image: 'https://images.unsplash.com/photo-1565708097881-bbf4ecf47cc1?auto=format&fit=crop&w=800&q=85',
-      filter: 'Sangeet'
-    }
-  ];
+export default function ShopTheOccasion({ activeTab = 'MEN', onSelectOccasion }) {
+  const occasionsByGender = {
+    MEN: [
+      {
+        id: 'WEDDING',
+        title: 'WEDDING',
+        subtitle: 'Royal Grooms & Grand Weddings',
+        image: '/images/vibe/men_royal_sherwani.jpg',
+        filter: 'Wedding'
+      },
+      {
+        id: 'RECEPTION',
+        title: 'RECEPTION',
+        subtitle: 'Imperial Velvet Bandhgalas',
+        image: '/images/vibe/men_reception_wear.jpg',
+        filter: 'Reception'
+      },
+      {
+        id: 'ENGAGEMENT',
+        title: 'ENGAGEMENT',
+        subtitle: 'Sculpted Indo-Western Ensembles',
+        image: '/images/vibe/men_indo_western.jpg',
+        filter: 'Engagement'
+      },
+      {
+        id: 'SANGEET',
+        title: 'SANGEET',
+        subtitle: 'Celebration Silk Kurta Jackets',
+        image: '/images/vibe/men_sangeet_wear.jpg',
+        filter: 'Sangeet'
+      },
+      {
+        id: 'CASUAL WEAR',
+        title: 'CASUAL WEAR',
+        subtitle: 'Relaxed Luxury Linen & Silk Kurtas',
+        image: '/images/vibe/men_casual_wear.jpg',
+        filter: 'Casual'
+      }
+    ],
+    WOMEN: [
+      {
+        id: 'WEDDING',
+        title: 'WEDDING',
+        subtitle: 'Heirloom Royal Bridal Lehengas',
+        image: '/images/vibe/bridal_lehenga.jpg',
+        filter: 'Wedding'
+      },
+      {
+        id: 'RECEPTION',
+        title: 'RECEPTION',
+        subtitle: 'Flared Royal Anarkalis & Gowns',
+        image: '/images/vibe/gowns_anarkalis.jpg',
+        filter: 'Reception'
+      },
+      {
+        id: 'ENGAGEMENT',
+        title: 'ENGAGEMENT',
+        subtitle: 'Statement Cocktail Ensembles',
+        image: '/images/vibe/engagement_wear.jpg',
+        filter: 'Engagement'
+      },
+      {
+        id: 'SANGEET',
+        title: 'SANGEET',
+        subtitle: 'Dramatic Twirl Shararas & Ghararas',
+        image: '/images/vibe/sharara_gharara.jpg',
+        filter: 'Sangeet'
+      },
+      {
+        id: 'CASUAL WEAR',
+        title: 'CASUAL WEAR',
+        subtitle: 'Chanderi Suits & Festive Kurtis',
+        image: '/images/vibe/kurti_suits.jpg',
+        filter: 'Casual'
+      }
+    ]
+  };
+
+  const occasions = occasionsByGender[activeTab] || occasionsByGender.MEN;
 
   return (
-    <section className="w-full px-4 sm:px-[30px] py-12 bg-[#fbf8f2]">
+    <section className="w-full px-4 sm:px-[30px] py-14 bg-[#fbf8f2]">
       {/* Decorative Motif & Heading */}
       <div className="text-center mb-10 space-y-2">
         <div className="flex justify-center mb-1">
@@ -42,41 +93,52 @@ export default function ShopTheOccasion({ onSelectOccasion }) {
         <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-[0.16em] text-[#2b241e] uppercase">
           SHOP THE OCCASION
         </h2>
+        <p className="font-sans text-xs sm:text-sm text-[#786e62] tracking-wider uppercase font-semibold">
+          Curated Ensembles for Every Grand Celebration
+        </p>
       </div>
 
-      {/* 4 Cards Grid */}
+      {/* 5 Cards Responsive Grid */}
       <div className="relative w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {occasions.map((occ) => (
             <div
               key={occ.id}
               onClick={() => onSelectOccasion && onSelectOccasion(occ.filter || occ.title)}
-              className="group relative cursor-pointer overflow-hidden rounded-sm border border-[#e6dccf] bg-[#ede3d2] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5"
-              style={{ height: '420px' }}
+              className="group relative cursor-pointer overflow-hidden rounded-md border border-[#e6dccf] bg-[#ede3d2] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 select-none"
+              style={{ height: '440px' }}
             >
+              {/* Card Image */}
               <img
                 src={occ.image}
                 alt={occ.title}
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="eager"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = activeTab === 'WOMEN'
+                    ? '/images/vibe/bridal_lehenga.jpg'
+                    : '/images/vibe/men_royal_sherwani.jpg';
+                }}
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-108"
               />
 
-              {/* Bottom Dark Maroon Gradient Banner */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#260e0a] via-[#3b1812]/85 to-transparent flex items-end justify-center pb-4">
-                <span className="font-serif text-white text-sm sm:text-base font-bold tracking-[0.15em] uppercase text-center px-4 drop-shadow-md group-hover:text-[#f7e0b5] transition-colors">
+              {/* Subtle Ambient Vignette */}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
+
+              {/* Bottom Dark Maroon Gradient Banner with Title and Subtitle */}
+              <div className="absolute inset-x-0 bottom-0 min-h-[110px] bg-gradient-to-t from-[#260e0a] via-[#3b1812]/90 via-60% to-transparent flex flex-col justify-end items-center pb-5 px-3 text-center transition-all duration-300">
+                <span className="font-serif text-white text-sm sm:text-base font-bold tracking-[0.16em] uppercase drop-shadow-md group-hover:text-[#f7e0b5] transition-colors">
                   {occ.title}
                 </span>
+                {occ.subtitle && (
+                  <span className="text-[#eaddc5]/80 text-[11px] font-sans tracking-wider uppercase mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-1">
+                    {occ.subtitle}
+                  </span>
+                )}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Circular Arrows */}
-        <button className="hidden 2xl:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer z-10">
-          <ChevronLeft size={20} />
-        </button>
-        <button className="hidden 2xl:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-[#e8dfd1] text-[#2b241e] hover:bg-[#e25822] hover:text-white items-center justify-center transition-all cursor-pointer z-10">
-          <ChevronRight size={20} />
-        </button>
       </div>
     </section>
   );

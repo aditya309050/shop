@@ -36,7 +36,7 @@ export default function Hero({ onExploreClick, onViewCategory }) {
       <div ref={imgRef} className="absolute inset-0 z-0 overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=2000&q=85" 
-          alt="Manyavar & Mohey Grand Wedding Campaign" 
+          alt="Chunnilal Megamart Grand Wedding Campaign" 
           className="w-full h-full object-cover object-center opacity-40 filter brightness-90 contrast-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-[#09090b]/80" />
@@ -68,7 +68,7 @@ export default function Hero({ onExploreClick, onViewCategory }) {
 
           {/* Subtitle */}
           <p className="font-editorial italic text-xl sm:text-2xl text-[#d4cdbf] leading-relaxed max-w-2xl">
-            From the sacred handlooms of Varanasi to Rajputana bridal zardozi and groom's shahi sherwanis: elevate every celebration with Manyavar & Mohey.
+            From the sacred handlooms of Varanasi to Rajputana bridal zardozi and groom's shahi sherwanis: elevate every celebration with Chunnilal Megamart.
           </p>
 
           {/* Action Buttons */}
@@ -78,7 +78,7 @@ export default function Hero({ onExploreClick, onViewCategory }) {
               className="px-8 py-4 rounded-sm bg-gradient-to-r from-gold via-gold-bright to-gold-dark text-black font-cinzel font-bold text-xs tracking-[0.2em] uppercase shadow-lg shadow-gold/30 hover:shadow-gold/60 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer"
             >
               <Gem size={14} />
-              <span>Shop Women (Mohey)</span>
+              <span>Shop Women (Bridal)</span>
             </button>
 
             <button
@@ -86,7 +86,7 @@ export default function Hero({ onExploreClick, onViewCategory }) {
               className="px-8 py-4 rounded-sm bg-[#181820]/90 border border-gold/50 text-gold-rich font-cinzel font-semibold text-xs tracking-[0.2em] uppercase hover:bg-gold/20 hover:text-white transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md"
             >
               <Crown size={14} className="text-gold" />
-              <span>Shop Men (Manyavar)</span>
+              <span>Shop Men (Groom)</span>
             </button>
           </div>
 

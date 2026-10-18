@@ -104,7 +104,7 @@ function MainContent() {
           }
         }
       } catch (err) {
-        console.log('Using integrated Manyavar default data.');
+        console.log('Using integrated Chunnilal Megamart default data.');
       }
     };
 
@@ -147,6 +147,8 @@ function MainContent() {
       <ManyavarNavbar 
         activeTab={activeGenderTab}
         onSelectTab={handleSelectTab}
+        onSelectFilter={handleFilterClick}
+        onNavigateCollections={() => handleNavigatePage('collections')}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
@@ -174,8 +176,9 @@ function MainContent() {
             onSelectVibe={handleFilterClick}
           />
 
-          {/* 3. Shop The Occasion (4 Photo Tiles) */}
+          {/* 3. Shop The Occasion (5 Photo Tiles) */}
           <ShopTheOccasion 
+            activeTab={activeGenderTab}
             onSelectOccasion={handleFilterClick}
           />
 

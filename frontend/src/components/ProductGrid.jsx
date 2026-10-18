@@ -15,8 +15,8 @@ export default function ProductGrid({ products = [], initialCategory = 'All' }) 
 
   const categories = [
     { label: 'All Celebrations', value: 'All' },
-    { label: 'Men (Manyavar)', value: 'Men' },
-    { label: 'Women (Mohey)', value: 'Women' },
+    { label: 'Men (Celebration)', value: 'Men' },
+    { label: 'Women (Couture)', value: 'Women' },
     { label: 'Banarasi Sarees', value: 'Banarasi Sarees' },
     { label: 'Bridal Lehengas', value: 'Lehengas' },
     { label: 'Kurtis & Suits', value: 'Kurtis & Suits' },
@@ -72,7 +72,7 @@ export default function ProductGrid({ products = [], initialCategory = 'All' }) 
         </div>
 
         <h2 className="font-display text-3xl sm:text-5xl font-normal text-ivory tracking-wide">
-          Manyavar & Mohey Masterpieces
+          Chunnilal Megamart Masterpieces
         </h2>
 
         <p className="font-editorial italic text-lg text-[#c4c0b8] max-w-2xl mx-auto">

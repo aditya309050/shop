@@ -15,7 +15,7 @@ export default function CategoryStories({ onSelectCategory, activeCategory }) {
       title: 'Banarasi Sarees',
       subtitle: 'Kadwa & Katan',
       image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80',
-      badge: 'Mohey Silk'
+      badge: 'Chunnilal Silk'
     },
     {
       id: 'Lehengas',
@@ -29,7 +29,7 @@ export default function CategoryStories({ onSelectCategory, activeCategory }) {
       title: 'Men Sherwanis',
       subtitle: 'Royal Groom',
       image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=80',
-      badge: 'Manyavar'
+      badge: 'Chunnilal'
     },
     {
       id: 'Kurtis & Suits',
@@ -43,7 +43,7 @@ export default function CategoryStories({ onSelectCategory, activeCategory }) {
       title: 'Kurta & Nehru Jacket',
       subtitle: 'Brocade Bundi',
       image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
-      badge: 'Manyavar'
+      badge: 'Chunnilal'
     },
     {
       id: 'Indo-Western',

@@ -152,16 +152,16 @@ export default function ManyavarFooter() {
         {/* Top Header inside Footer: Logo + Newsletter */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-10 border-b border-[#461e15]">
           
-          {/* Manyavar & Mohey Brand Title */}
-          <div className="flex items-center gap-2 select-none cursor-pointer">
-            <span className="font-display text-3xl font-bold tracking-tight text-[#e8903c]">
-              Manyavar
+          {/* Chunnilal Megamart Brand Title */}
+          <div className="flex items-center gap-2 select-none cursor-pointer group">
+            <span className="font-display text-3xl font-bold tracking-tight text-[#e8903c] transition-colors group-hover:text-[#f5a65b]">
+              Chunnilal
             </span>
-            <span className="w-6 h-6 rounded-xs bg-[#e25822] text-[#fbf8f2] flex items-center justify-center font-bold text-xs">
-              M
-            </span>
-            <span className="font-display text-3xl font-bold tracking-tight text-[#e8903c]">
-              Mohey
+            <div className="w-7 h-7 rounded-sm bg-gradient-to-br from-[#ea580c] via-[#e25822] to-[#c84412] text-[#fbf8f2] flex items-center justify-center font-cinzel font-bold text-[11px] tracking-wider shadow-sm border border-white/20">
+              CM
+            </div>
+            <span className="font-display text-3xl font-bold tracking-tight text-[#e8903c] transition-colors group-hover:text-[#f5a65b]">
+              Megamart
             </span>
           </div>
 
@@ -332,7 +332,7 @@ export default function ManyavarFooter() {
 
           {/* Center: Copyright */}
           <div className="text-center font-sans text-xs text-[#a39285]">
-            © 2026 Vedant Fashions Ltd. All rights reserved.
+            © 2026 Chunnilal Megamart. All rights reserved.
           </div>
 
           {/* Right: Payment Badges */}

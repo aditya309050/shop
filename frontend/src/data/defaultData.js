@@ -1,11 +1,11 @@
 export const defaultProducts = [
   // ============================================================
-  // --- 1. MEN'S COLLECTION (MANYAVAR) ---
+  // --- 1. MEN'S COLLECTION (Chunnilal) ---
   // ============================================================
   {
     id: "vijay-light-grey-indo-western",
     name: "Vijay's Light Grey & White Net Indo Western Set with Floral Embroidery",
-    brand: "Manyavar Celebration",
+    brand: "Chunnilal Celebration",
     gender: "Men",
     vibe: "INDO WESTERN",
     occasion: "SANGEET",
@@ -39,7 +39,7 @@ export const defaultProducts = [
   {
     id: "regal-white-sherwani-ensemble",
     name: "Regal White & Gold Pure Silk Sherwani Ensemble",
-    brand: "Manyavar Groom",
+    brand: "Chunnilal Groom",
     gender: "Men",
     vibe: "SHERWANI",
     occasion: "WEDDING",
@@ -73,7 +73,7 @@ export const defaultProducts = [
   {
     id: "cream-bel-buti-sherwani-set",
     name: "Cream Bel Buti Patterned Royal Sherwani Set",
-    brand: "Manyavar Groom",
+    brand: "Chunnilal Groom",
     gender: "Men",
     vibe: "SHERWANI",
     occasion: "WEDDING",
@@ -106,7 +106,7 @@ export const defaultProducts = [
   {
     id: "grape-velvet-splendor-indo-western",
     name: "Grape Velvet Splendor Royal Jodhpuri Set",
-    brand: "Manyavar Royal",
+    brand: "Chunnilal Royal",
     gender: "Men",
     vibe: "JODHPURI",
     occasion: "RECEPTION",
@@ -140,7 +140,7 @@ export const defaultProducts = [
   {
     id: "embroidered-kurta-jacket-set",
     name: "Mustard Silk Kurta with Floral Embroidered Nehru Jacket",
-    brand: "Manyavar Celebration",
+    brand: "Chunnilal Celebration",
     gender: "Men",
     vibe: "KURTA JACKET SET",
     occasion: "ENGAGEMENT",
@@ -162,7 +162,7 @@ export const defaultProducts = [
       "https://images.unsplash.com/photo-1565708097881-bbf4ecf47cc1?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
     ],
-    description: "A perennial Manyavar favorite for Haldi, Mehendi, and Engagement ceremonies. Lightweight pure silk kurta with an intricately embroidered sleeveless Bundi jacket.",
+    description: "A perennial Chunnilal favorite for Haldi, Mehendi, and Engagement ceremonies. Lightweight pure silk kurta with an intricately embroidered sleeveless Bundi jacket.",
     details: [
       "Fabric: Pure Silk Kurta with Embroidered Raw Silk Jacket",
       "Set: Kurta + Churidar + Nehru Jacket"
@@ -172,19 +172,19 @@ export const defaultProducts = [
   },
 
   // ============================================================
-  // --- 2. WOMEN'S COLLECTION (MOHEY) ---
+  // --- 2. WOMEN'S COLLECTION (Chunnilal) ---
   // ============================================================
   {
     id: "crimson-kashi-kadwa-banarasi",
     name: "Royal Crimson Kadwa Katan Banarasi Silk Saree",
-    brand: "Mohey Haute Couture",
+    brand: "Chunnilal Haute Couture",
     gender: "Women",
     vibe: "BANARASI SAREE",
     occasion: "WEDDING",
     tagline: "Pure mulberry Katan silk with 24K electroplated gold Kadwa floral bel",
     price: 34500,
     originalPrice: 42000,
-    badge: "MOHEY BRIDAL",
+    badge: "CHUNNILAL BRIDAL",
     currency: "INR",
     category: "Banarasi Sarees",
     subCategory: "Kadwa Katan Silk",
@@ -210,7 +210,7 @@ export const defaultProducts = [
   {
     id: "rajputana-crimson-bridal-lehenga",
     name: "Mehr-un-Nisa Crimson Rajputana 32-Kali Bridal Lehenga",
-    brand: "Mohey Bridal",
+    brand: "CHUNNILAL BRIDAL",
     gender: "Women",
     vibe: "BRIDAL LEHENGA",
     occasion: "WEDDING",
@@ -243,7 +243,7 @@ export const defaultProducts = [
   {
     id: "sovereign-gold-banarasi-tissue",
     name: "Sovereign Molten Gold Banarasi Tissue Saree",
-    brand: "Mohey Celebration",
+    brand: "Chunnilal Celebration",
     gender: "Women",
     vibe: "BANARASI SAREE",
     occasion: "RECEPTION",
@@ -276,7 +276,7 @@ export const defaultProducts = [
   {
     id: "chanderi-silk-embroidered-kurti-set",
     name: "Zeenat Chanderi Silk Royal Kurti & Palazzo Set",
-    brand: "Mohey Festive",
+    brand: "Chunnilal Festive",
     gender: "Women",
     vibe: "KURTI & SUITS",
     occasion: "ENGAGEMENT",
@@ -308,12 +308,12 @@ export const defaultProducts = [
   },
 
   // ============================================================
-  // --- 3. KIDS COLLECTION (MANYAVAR & MOHEY KIDS) ---
+  // --- 3. KIDS COLLECTION (Chunnilal Megamart KIDS) ---
   // ============================================================
   {
     id: "little-prince-brocade-sherwani",
     name: "Little Maharaja Brocade Sherwani & Dhoti Set",
-    brand: "Manyavar Kids",
+    brand: "Chunnilal Kids",
     gender: "Kids",
     vibe: "BOYS SHERWANI",
     occasion: "WEDDING",
@@ -347,7 +347,7 @@ export const defaultProducts = [
   {
     id: "little-princess-rani-pink-lehenga",
     name: "Rani Pink Embroidered Little Princess Lehenga Choli",
-    brand: "Mohey Kids",
+    brand: "Chunnilal Kids",
     gender: "Kids",
     vibe: "GIRLS LEHENGA",
     occasion: "WEDDING",
@@ -380,7 +380,7 @@ export const defaultProducts = [
   {
     id: "boys-haldi-yellow-kurta-jacket",
     name: "Boys Sunlit Haldi Yellow Silk Kurta & Jacket Set",
-    brand: "Manyavar Kids",
+    brand: "Chunnilal Kids",
     gender: "Kids",
     vibe: "BOYS KURTA SET",
     occasion: "ENGAGEMENT",
@@ -414,9 +414,9 @@ export const defaultProducts = [
 
 export const defaultCollections = [
   {
-    id: "manyavar-groom-collection",
+    id: "Chunnilal-groom-collection",
     title: "The Grand Groom's Collection",
-    brand: "Manyavar Groom",
+    brand: "Chunnilal Groom",
     gender: "Men",
     subtitle: "Pure Silk Sherwanis, Safas & Regal Stoles",
     tag: "Groom's Special",
@@ -426,9 +426,9 @@ export const defaultCollections = [
     badge: "Groom's Sovereign"
   },
   {
-    id: "mohey-bridal-archives",
-    title: "Mohey Imperial Bridal Lehengas",
-    brand: "Mohey Bridal",
+    id: "Chunnilal-bridal-archives",
+    title: "Chunnilal Imperial Bridal Lehengas",
+    brand: "CHUNNILAL BRIDAL",
     gender: "Women",
     subtitle: "Heirloom 32-Kali Flare & Mughal Zardozi",
     tag: "High Couture",
@@ -438,9 +438,9 @@ export const defaultCollections = [
     badge: "Royal Bridal Edit"
   },
   {
-    id: "mohey-sacred-banarasi",
+    id: "Chunnilal-sacred-banarasi",
     title: "Sacred Banarasi & Kashi Weaves",
-    brand: "Mohey Handlooms",
+    brand: "Chunnilal Handlooms",
     gender: "Women",
     subtitle: "Authentic Kadwa, Katan & Molten Tissue",
     tag: "GI Tag Handlooms",
@@ -450,9 +450,9 @@ export const defaultCollections = [
     badge: "Varanasi Masterpiece"
   },
   {
-    id: "manyavar-kids-celebrations",
-    title: "Manyavar & Mohey Kids Celebrations",
-    brand: "Manyavar Kids",
+    id: "Chunnilal-kids-celebrations",
+    title: "Chunnilal Megamart Kids Celebrations",
+    brand: "Chunnilal Kids",
     gender: "Kids",
     subtitle: "Sherwanis, Kurta Sets & Little Princess Lehengas",
     tag: "Kids Celebration",
